@@ -1,75 +1,111 @@
-# React + TypeScript + Vite
+Bridge2Work
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Bridge2Work is a career exploration and skills assessment platform designed to help young people in Nigeria understand digital career paths, identify the skills required for different roles, and assess their current level of knowledge.
 
-Currently, two official plugins are available:
+Problem
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Many young people and recent graduates want to transition into digital careers but are unsure which career path to choose, what skills they need, or where to begin.
 
-## React Compiler
+Bridge2Work provides a simple starting point by helping users explore career options and understand the skills and learning steps associated with each path.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+MVP Features
 
-## Expanding the ESLint configuration
+- Explore digital career pathways
+- View individual career roadmaps
+- Take a skills assessment
+- Track assessment progress
+- View assessment results
+- Identify a user’s current skill level
+- Navigate between career exploration and assessment pages
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Target Users
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Bridge2Work is designed for:
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- Students
+- Recent graduates
+- Young job seekers
+- People exploring digital career opportunities
+- Beginners looking to transition into tech
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+Career Paths
 
-```
+The platform focuses on digital career options such as:
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+- Frontend Development
+- Data Analysis
+- Virtual Assistance
+- Product Management
+- Other entry-level digital career paths
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Tech Stack
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- React
+- TypeScript
+- Vite
+- CSS
+- Git & GitHub
+- Vercel
 
-```
+Getting Started
+
+Prerequisites
+
+Make sure you have Node.js and npm installed on your computer.
+
+Installation
+
+Clone the repository:
+
+git clone https://github.com/halimaabdulsalam/Bridge2Work.git
+
+Navigate into the project:
+
+cd Bridge2Work
+
+Install the dependencies:
+
+npm install
+
+Start the development server:
+
+npm run dev
+
+The application will be available at the local development URL provided by Vite.
+
+Production Build
+
+To create a production build, run:
+
+npm run build
+
+To preview the production build locally:
+
+npm run preview
+
+Project Structure
+
+Bridge2Work/
+├── public/
+├── src/
+│ ├── pages/
+│ │ ├── Home.tsx
+│ │ ├── Assessment.tsx
+│ │ └── Results.tsx
+│ ├── index.css
+│ └── ...
+├── package.json
+├── README.md
+└── ...
+
+Nexus Internship Project
+
+Bridge2Work was developed as a Group 4 project for the Nexus Internship.
+
+Project Goal
+
+The goal of Bridge2Work is to make digital career exploration more accessible by giving young people a clear starting point for discovering career options, understanding required skills, and identifying areas they can develop.
+
+Deployment
+
+The application is deployed using Vercel.
