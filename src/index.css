@@ -176,7 +176,9 @@ main p {
   background: white;
   border: 1px solid #e5e7eb;
   border-radius: 14px;
-  transition: transform 0.2s ease, border-color 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease;
 }
 
 .home-feature:hover {
@@ -515,4 +517,4 @@ main > h1 + h2 ~ a:hover {
 .results-item span {
   flex-shrink: 0;
   font-size: 14px;
-  font
+}
