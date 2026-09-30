@@ -80,6 +80,17 @@ function Results() {
         <p className="results-level">
           Current level: <strong>{level}</strong>
         </p>
+
+        <p className="results-level-description">
+          {level === "Beginner" &&
+            "You're starting to build your foundation in this career."}
+
+          {level === "Intermediate" &&
+            "You have some confidence in the core skills and can focus on building practical experience."}
+
+          {level === "Advanced" &&
+            "You show strong confidence across the assessed areas and can focus on deeper practice and real-world projects."}
+        </p>
       </section>
 
       <section className="results-breakdown">
@@ -141,6 +152,19 @@ function Results() {
             </div>
           ))}
         </div>
+      </section>
+
+      <section className="results-next">
+        <h2>What to Do Next</h2>
+
+        <p>
+          Start with the first step in your learning path and build your skills
+          through practice and small projects.
+        </p>
+
+        <Link to={`/careers/${careerId}`} className="secondary-button">
+          Review Career Details
+        </Link>
       </section>
 
       <div className="results-actions">

@@ -59,21 +59,6 @@ nav a:not(:first-child):hover {
   color: #2563eb;
 }
 
-@media (max-width: 600px) {
-  nav {
-    padding: 18px 25px;
-    gap: 20px;
-  }
-
-  nav a:first-child {
-    font-size: 20px;
-  }
-
-  nav a:not(:first-child) {
-    font-size: 14px;
-  }
-}
-
 /* =========================
    General Page Layout
 ========================= */
@@ -99,12 +84,8 @@ main p {
   color: #64748b;
 }
 
-.home {
-  padding-top: 0;
-}
-
 /* =========================
-   Home Hero
+   Home Page
 ========================= */
 
 .home {
@@ -178,23 +159,42 @@ main p {
 }
 
 /* =========================
-   Mobile
+   Home Feature Cards
 ========================= */
 
-@media (max-width: 768px) {
-  .hero {
-    grid-template-columns: 1fr;
-    gap: 45px;
-    padding: 40px 0;
-  }
+.home-features {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 70px;
+  padding-bottom: 30px;
+}
 
-  .hero h1 {
-    font-size: 42px;
-  }
+.home-feature {
+  display: block;
+  padding: 28px;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
 
-  .hero-image img {
-    max-width: 400px;
-  }
+.home-feature:hover {
+  transform: translateY(-3px);
+  border-color: #2563eb;
+}
+
+.home-feature h2 {
+  margin-top: 0;
+  margin-bottom: 12px;
+  font-size: 21px;
+  color: #172033;
+}
+
+.home-feature p {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.7;
 }
 
 /* =========================
@@ -235,22 +235,6 @@ main > section article a {
 
 main > section article a:hover {
   text-decoration: underline;
-}
-
-/* =========================
-   Careers Mobile
-========================= */
-
-@media (max-width: 900px) {
-  main > section {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 600px) {
-  main > section {
-    grid-template-columns: 1fr;
-  }
 }
 
 /* =========================
@@ -307,18 +291,24 @@ main > ul + a:hover {
   background: #1d4ed8;
 }
 
-@media (max-width: 600px) {
-  main > ul {
-    grid-template-columns: 1fr;
-  }
-}
-
 /* =========================
    Assessment
 ========================= */
 
 .assessment {
   max-width: 800px;
+}
+
+.assessment-back {
+  display: inline-block;
+  margin-bottom: 30px;
+  color: #64748b;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.assessment-back:hover {
+  color: #2563eb;
 }
 
 .question-number {
@@ -380,6 +370,64 @@ main > ul + a:hover {
 }
 
 /* =========================
+   Assessment Career Selection
+========================= */
+
+.assessment-selection {
+  max-width: 1000px;
+}
+
+.assessment-selection-header {
+  max-width: 650px;
+}
+
+.assessment-selection-header h1 {
+  margin-bottom: 15px;
+}
+
+.assessment-selection-header p {
+  margin: 0;
+}
+
+.assessment-careers {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 45px;
+}
+
+.assessment-career-card {
+  display: block;
+  padding: 24px;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  transition: 0.2s ease;
+}
+
+.assessment-career-card:hover {
+  border-color: #2563eb;
+  transform: translateY(-3px);
+}
+
+.assessment-career-card h2 {
+  margin: 0 0 12px;
+  font-size: 20px;
+  color: #172033;
+}
+
+.assessment-career-card p {
+  margin: 0 0 18px;
+  font-size: 14px;
+}
+
+.assessment-career-card span {
+  color: #2563eb;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* =========================
    Results Page
 ========================= */
 
@@ -414,63 +462,6 @@ main > h1 + h2 ~ a {
 
 main > h1 + h2 ~ a:hover {
   background: #1d4ed8;
-}
-
-/* =========================
-    Mobile Cleanup
-========================= */
-
-@media (max-width: 600px) {
-  main {
-    width: 90%;
-    padding: 45px 0;
-  }
-
-  main h1 {
-    font-size: 38px;
-  }
-
-  main h2 {
-    font-size: 24px;
-  }
-
-  .hero {
-    min-height: auto;
-    padding: 30px 0 50px;
-  }
-
-  .hero h1 {
-    font-size: 40px;
-  }
-
-  .hero-description {
-    font-size: 16px;
-  }
-
-  .hero-image img {
-    width: 90%;
-    max-width: 350px;
-  }
-
-  main > section {
-    gap: 16px;
-  }
-
-  main > section article {
-    padding: 22px;
-  }
-
-  .assessment h2 {
-    font-size: 24px;
-  }
-
-  .answer-options button {
-    padding: 16px;
-  }
-
-  .next-button {
-    width: 100%;
-  }
 }
 
 .results-breakdown {
@@ -524,83 +515,4 @@ main > h1 + h2 ~ a:hover {
 .results-item span {
   flex-shrink: 0;
   font-size: 14px;
-  font-weight: 700;
-  color: #2563eb;
-}
-
-@media (max-width: 700px) {
-  .results-breakdown {
-    grid-template-columns: 1fr;
-  }
-
-  .results-section {
-    padding: 22px;
-  }
-
-  .results-item {
-    align-items: flex-start;
-  }
-}
-
-.results-roadmap {
-  display: block;
-  margin: 35px 0;
-  padding: 32px;
-  background: white;
-  border: 1px solid #e5e7eb;
-  border-radius: 14px;
-  text-align: left;
-}
-
-.results-roadmap h2 {
-  margin-top: 0;
-  margin-bottom: 12px;
-  font-size: 24px;
-}
-
-.results-roadmap > p {
-  margin-bottom: 24px;
-}
-
-.roadmap-list {
-  display: grid;
-  gap: 14px;
-}
-
-.roadmap-step {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  padding: 14px 16px;
-  background: #f8fafc;
-  border-radius: 8px;
-}
-
-.roadmap-number {
-  width: 32px;
-  height: 32px;
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  background: #eff6ff;
-  color: #2563eb;
-  font-weight: 700;
-}
-
-.roadmap-step p {
-  margin: 0;
-  color: #475569;
-  font-size: 15px;
-}
-
-@media (max-width: 600px) {
-  .results-roadmap {
-    padding: 24px 20px;
-  }
-
-  .roadmap-step {
-    align-items: flex-start;
-  }
-}
+  font

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { assessmentQuestions } from "../data/AssessmentQuestions";
 
 const answerOptions = [
@@ -14,18 +14,61 @@ function Assessment() {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
 
-  const careerId = searchParams.get("career") || "virtual-assistant";
-
-  const assessment =
-    assessmentQuestions[careerId as keyof typeof assessmentQuestions];
+  const careerId = searchParams.get("career");
 
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState<number[]>([]);
+
+  // Career selection screen
+  if (!careerId) {
+    const careers = Object.entries(assessmentQuestions);
+
+    return (
+      <main className="assessment-selection">
+        <div className="assessment-selection-header">
+          <p className="results-label">SKILLS ASSESSMENT</p>
+
+          <h1>Choose a Career to Assess</h1>
+
+          <p>
+            Select a career path to assess your current confidence and discover
+            areas you can build.
+          </p>
+        </div>
+
+        <div className="assessment-careers">
+          {careers.map(([id, assessment]) => (
+            <Link
+              key={id}
+              to={`/assessment?career=${id}`}
+              className="assessment-career-card"
+            >
+              <h2>{assessment.title}</h2>
+
+              <p>
+                Assess your current confidence across the skills needed for this
+                career.
+              </p>
+
+              <span>Start Assessment →</span>
+            </Link>
+          ))}
+        </div>
+      </main>
+    );
+  }
+
+  const assessment =
+    assessmentQuestions[careerId as keyof typeof assessmentQuestions];
 
   if (!assessment) {
     return (
       <main>
         <h1>Assessment not found</h1>
+
+        <Link to="/assessment" className="secondary-button">
+          Choose Another Career
+        </Link>
       </main>
     );
   }
@@ -54,14 +97,19 @@ function Assessment() {
       const answerData = encodeURIComponent(JSON.stringify(answers));
 
       navigate(
-        `/results?career=${careerId}&score=${average.toFixed(1)}&answers=${answerData}`,
+        `/results?career=${careerId}&score=${average.toFixed(
+          1,
+        )}&answers=${answerData}`,
       );
-      navigate(`/results?career=${careerId}&score=${average.toFixed(1)}`);
     }
   }
 
   return (
     <main className="assessment">
+      <Link to="/assessment" className="assessment-back">
+        ← Choose Another Career
+      </Link>
+
       <h1>{assessment.title} Assessment</h1>
 
       <p className="question-number">
