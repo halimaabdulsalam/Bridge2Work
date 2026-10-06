@@ -31,7 +31,7 @@ export const businessCareers: Career[] = [
         step: "Learn product management fundamentals",
         detail:
           "Learn to state a user problem, a goal and a measure of success in one paragraph.",
-        hours: 40,
+        hours: 25,
         questions: [
           "How well can you identify and clearly define a user's problem?",
           "How comfortable are you defining product goals?",
@@ -43,7 +43,7 @@ export const businessCareers: Career[] = [
         step: "Practise user research",
         detail:
           "Interview five users of a real product and summarise their three biggest frustrations.",
-        hours: 40,
+        hours: 25,
         questions: [
           "How familiar are you with conducting user or market research?",
           "How effectively can you gather and interpret user feedback?",
@@ -54,7 +54,7 @@ export const businessCareers: Career[] = [
         step: "Learn product strategy",
         detail:
           "Build a simple roadmap and defend the order of everything on it.",
-        hours: 50,
+        hours: 30,
         questions: [
           "How well can you create or contribute to a product roadmap?",
           "How capable are you of prioritising features based on user and business value?",
@@ -68,7 +68,7 @@ export const businessCareers: Career[] = [
         step: "Practise writing product requirements",
         detail:
           "Write a one-page spec and user stories that a designer and a developer can both act on.",
-        hours: 50,
+        hours: 30,
         questions: [
           "How effectively can you gather and prioritise product requirements?",
           "How familiar are you with writing user stories or product requirements?",
@@ -81,7 +81,7 @@ export const businessCareers: Career[] = [
         step: "Work on product case studies",
         detail:
           "Write two case studies that go from problem to launch plan, and present one out loud.",
-        hours: 60,
+        hours: 35,
         questions: [
           "How prepared are you to take a product idea from identifying the problem through planning and launch?",
           "How confident are you presenting a product case study and defending your decisions?",
@@ -161,7 +161,7 @@ export const businessCareers: Career[] = [
         step: "Learn market research",
         detail:
           "Map one market: who the customers are, who the competitors are and how each one sells.",
-        hours: 35,
+        hours: 20,
         questions: [
           "How well do you understand the role of product marketing?",
           "How familiar are you with conducting market research?",
@@ -173,7 +173,7 @@ export const businessCareers: Career[] = [
         step: "Understand product positioning",
         detail:
           "Write a positioning statement and three key messages for a product you know well.",
-        hours: 40,
+        hours: 25,
         questions: [
           "How well can you identify a product's unique value proposition?",
           "How effectively can you develop product positioning and messaging?",
@@ -185,7 +185,7 @@ export const businessCareers: Career[] = [
         step: "Learn marketing strategy",
         detail:
           "Plan a launch: the audience, the channels, the materials and the timeline.",
-        hours: 45,
+        hours: 25,
         questions: [
           "How familiar are you with developing a go-to-market strategy?",
           "How comfortable are you planning a product launch campaign?",
@@ -198,7 +198,7 @@ export const businessCareers: Career[] = [
         step: "Practise customer research",
         detail:
           "Interview five customers and rewrite your messaging in the words they actually use.",
-        hours: 35,
+        hours: 20,
         questions: [
           "How effectively can you identify a product's target audience?",
           "How capable are you of creating customer personas?",
@@ -210,7 +210,7 @@ export const businessCareers: Career[] = [
         step: "Create product marketing case studies",
         detail:
           "Write up one launch from research to results, including what you would change.",
-        hours: 55,
+        hours: 35,
         questions: [
           "How capable are you of analysing product and marketing performance data?",
           "How prepared are you to plan and evaluate a product launch from research through post-launch?",
@@ -278,7 +278,7 @@ export const businessCareers: Career[] = [
         step: "Learn digital marketing fundamentals",
         detail:
           "Learn the funnel, how to define an audience and how to write copy that gets a click.",
-        hours: 30,
+        hours: 15,
         questions: [
           "How well do you understand the fundamentals of digital marketing?",
           "How well can you identify and define a target audience?",
@@ -290,7 +290,7 @@ export const businessCareers: Career[] = [
         step: "Learn social media marketing",
         detail:
           "Plan and publish a month of content for one brand from a single content calendar.",
-        hours: 40,
+        hours: 20,
         questions: [
           "How familiar are you with creating content for social media?",
           "How effectively can you develop a social-media strategy?",
@@ -303,7 +303,7 @@ export const businessCareers: Career[] = [
         step: "Learn SEO and content marketing",
         detail:
           "Optimise one page for search, send one email campaign and run one small paid advert.",
-        hours: 50,
+        hours: 30,
         questions: [
           "How familiar are you with SEO?",
           "How capable are you of creating an email marketing campaign?",
@@ -315,7 +315,7 @@ export const businessCareers: Career[] = [
         step: "Learn marketing analytics",
         detail:
           "Read reach, clicks, conversions and cost, and say in one sentence what they mean.",
-        hours: 40,
+        hours: 25,
         questions: [
           "How well can you interpret social-media and campaign performance data?",
           "How familiar are you with tools such as Google Analytics?",
@@ -327,7 +327,7 @@ export const businessCareers: Career[] = [
         step: "Create practical marketing campaigns",
         detail:
           "Run one complete campaign for a real business and report what it achieved.",
-        hours: 50,
+        hours: 35,
         questions: [
           "How comfortable are you planning a complete digital marketing campaign?",
           "How prepared are you to measure and evaluate the success of a digital marketing campaign?",
@@ -398,7 +398,7 @@ export const businessCareers: Career[] = [
         step: "Learn digital productivity tools",
         detail:
           "Get quick with documents, spreadsheets and a task board, and practise picking up a new tool in a day.",
-        hours: 30,
+        hours: 15,
         questions: [
           "How comfortable are you using tools such as Google Workspace or Microsoft Office?",
           "How would you rate your ability to create professional documents?",
@@ -412,7 +412,7 @@ export const businessCareers: Career[] = [
         step: "Build communication and organisation skills",
         detail:
           "Write clear, short updates and run your own week from a single task list.",
-        hours: 25,
+        hours: 15,
         questions: [
           "How comfortable are you communicating professionally with clients or team members?",
           "How effectively can you manage several tasks while meeting deadlines?",
@@ -425,7 +425,7 @@ export const businessCareers: Career[] = [
         step: "Practise email and calendar management",
         detail:
           "Set up labels, filters and scheduling rules, then manage a practice inbox for a week.",
-        hours: 20,
+        hours: 10,
         questions: [
           "How familiar are you with managing professional emails and inboxes?",
           "How well can you organise and manage a digital calendar?",
@@ -436,7 +436,7 @@ export const businessCareers: Career[] = [
         step: "Learn basic customer support",
         detail:
           "Practise answering routine enquiries, researching answers and handling private information properly.",
-        hours: 25,
+        hours: 15,
         questions: [
           "How well can you conduct online research and identify reliable information?",
           "How well do you understand the importance of protecting confidential client information?",
@@ -448,7 +448,7 @@ export const businessCareers: Career[] = [
         step: "Create sample work for your portfolio",
         detail:
           "Prepare samples: a managed calendar, a travel plan, a research brief. Then pitch one real client.",
-        hours: 30,
+        hours: 20,
         questions: [
           "How prepared are you to independently handle administrative tasks for a client?",
           "How confident are you finding and pitching your first client?",
@@ -524,7 +524,7 @@ export const businessCareers: Career[] = [
         step: "Learn CRM fundamentals",
         detail:
           "Understand leads, accounts, contacts and opportunities, and how a sale moves between them.",
-        hours: 20,
+        hours: 10,
         questions: [
           "How familiar are you with customer relationship management systems?",
           "How well do you understand how CRM systems store customer information?",
@@ -535,7 +535,7 @@ export const businessCareers: Career[] = [
         step: "Learn Salesforce navigation",
         detail:
           "Create users, profiles and permission sets in a free practice org.",
-        hours: 40,
+        hours: 20,
         questions: [
           "How comfortable are you navigating Salesforce or similar platforms?",
           "How familiar are you with creating and managing users?",
@@ -547,7 +547,7 @@ export const businessCareers: Career[] = [
         step: "Practise data management",
         detail:
           "Import a messy customer list, remove the duplicates and set rules that keep it clean.",
-        hours: 40,
+        hours: 25,
         questions: [
           "How comfortable are you managing customer and account records?",
           "How well can you organise and maintain CRM data?",
@@ -559,7 +559,7 @@ export const businessCareers: Career[] = [
         step: "Learn workflows and automation",
         detail:
           "Build a dashboard a sales manager would use, and one automation that saves them a daily task.",
-        hours: 60,
+        hours: 35,
         questions: [
           "How familiar are you with Salesforce reports and dashboards?",
           "How comfortable are you creating basic reports?",
@@ -572,7 +572,7 @@ export const businessCareers: Career[] = [
         step: "Build Salesforce administration projects",
         detail:
           "Run your practice org like a real one: handle requests, fix issues and document what you changed.",
-        hours: 60,
+        hours: 35,
         questions: [
           "How comfortable are you troubleshooting basic Salesforce issues?",
           "How effectively can you support users who have questions about Salesforce?",
@@ -645,7 +645,7 @@ export const businessCareers: Career[] = [
         step: "Learn AI fundamentals",
         detail:
           "Understand what today's AI tools are, how they produce answers and why they can be wrong.",
-        hours: 15,
+        hours: 5,
         questions: [
           "How familiar are you with basic artificial intelligence concepts?",
           "How familiar are you with generative AI?",
@@ -656,7 +656,7 @@ export const businessCareers: Career[] = [
         step: "Learn how to use AI tools",
         detail:
           "Use an AI assistant daily for a fortnight: research, drafting, summarising and analysis.",
-        hours: 25,
+        hours: 10,
         questions: [
           "How comfortable are you using AI tools for everyday tasks?",
           "How comfortable are you using AI to research information?",
@@ -670,7 +670,7 @@ export const businessCareers: Career[] = [
         step: "Practise prompt writing",
         detail:
           "Learn to give context, examples and constraints, and to improve a weak answer in two tries.",
-        hours: 20,
+        hours: 10,
         questions: [
           "How well can you write clear prompts for AI tools?",
           "How well can you improve a weak AI answer by refining your prompt or adding context?",
@@ -681,7 +681,7 @@ export const businessCareers: Career[] = [
         step: "Understand responsible AI use",
         detail:
           "Learn to fact-check output, protect private data and say plainly when you used AI.",
-        hours: 15,
+        hours: 5,
         questions: [
           "How well can you evaluate whether AI-generated information is reliable?",
           "How familiar are you with responsible and ethical AI use?",
@@ -694,7 +694,7 @@ export const businessCareers: Career[] = [
         step: "Build practical AI-assisted projects",
         detail:
           "Redo three real tasks with AI and record the time saved and the mistakes you caught.",
-        hours: 35,
+        hours: 15,
         questions: [
           "How comfortable are you combining AI tools with your existing digital skills?",
           "How capable are you of learning and adapting to new AI tools?",

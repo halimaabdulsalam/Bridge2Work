@@ -26,7 +26,7 @@ export const techCareers: Career[] = [
         step: "Learn HTML and CSS",
         detail:
           "Build three pages from scratch that look right on a phone and on a laptop.",
-        hours: 60,
+        hours: 30,
         questions: [
           "How familiar are you with HTML?",
           "How comfortable are you writing CSS?",
@@ -39,7 +39,7 @@ export const techCareers: Career[] = [
         step: "Learn JavaScript",
         detail:
           "Make pages interactive: handle clicks and forms, and load data from an API.",
-        hours: 90,
+        hours: 55,
         questions: [
           "How familiar are you with JavaScript?",
           "How well can you work with APIs?",
@@ -52,7 +52,7 @@ export const techCareers: Career[] = [
         step: "Learn React",
         detail:
           "Rebuild one of your pages as reusable components that manage their own state.",
-        hours: 70,
+        hours: 40,
         questions: [
           "How familiar are you with React or another frontend framework?",
           "How comfortable are you creating reusable components?",
@@ -64,7 +64,7 @@ export const techCareers: Career[] = [
         step: "Learn TypeScript",
         detail:
           "Add types to a React project until your editor catches mistakes before you run it.",
-        hours: 30,
+        hours: 15,
         questions: [
           "How comfortable are you using TypeScript?",
           "How well can you read a type error and fix what caused it?",
@@ -75,7 +75,7 @@ export const techCareers: Career[] = [
         step: "Build and deploy frontend projects",
         detail:
           "Put two finished projects online, each with a public link and a clear README.",
-        hours: 60,
+        hours: 45,
         questions: [
           "How comfortable are you using Git and GitHub?",
           "How effectively can you turn a design into a working webpage?",
@@ -152,7 +152,7 @@ export const techCareers: Career[] = [
         step: "Learn a backend programming language",
         detail:
           "Pick one language and write small programs until loops, functions and errors feel normal.",
-        hours: 90,
+        hours: 55,
         questions: [
           "How familiar are you with server-side programming?",
           "How comfortable are you working with a programming language such as Node.js, Python or Java?",
@@ -163,7 +163,7 @@ export const techCareers: Career[] = [
         name: "APIs and HTTP",
         step: "Learn APIs",
         detail: "Build a small API with a few routes and test every one of them.",
-        hours: 60,
+        hours: 35,
         questions: [
           "How familiar are you with building APIs?",
           "How well do you understand HTTP requests and responses?",
@@ -174,7 +174,7 @@ export const techCareers: Career[] = [
         name: "Databases",
         step: "Understand databases",
         detail: "Design the tables for a simple app and query them with SQL.",
-        hours: 60,
+        hours: 35,
         questions: [
           "How well do you understand databases?",
           "How comfortable are you writing SQL queries?",
@@ -186,7 +186,7 @@ export const techCareers: Career[] = [
         step: "Learn server-side development",
         detail:
           "Add sign-up, login and permissions to your API, and protect it from bad input.",
-        hours: 60,
+        hours: 35,
         questions: [
           "How comfortable are you working with authentication and authorization?",
           "How well do you understand basic web security?",
@@ -198,7 +198,7 @@ export const techCareers: Career[] = [
         step: "Build backend projects",
         detail:
           "Deploy one complete API with a database, and write down how someone else can run it.",
-        hours: 70,
+        hours: 50,
         questions: [
           "How familiar are you with Git and GitHub?",
           "How familiar are you with deploying backend applications?",
@@ -270,7 +270,7 @@ export const techCareers: Career[] = [
         step: "Learn Linux fundamentals",
         detail:
           "Use the terminal every day: files, permissions, processes, and logging in to a remote machine.",
-        hours: 50,
+        hours: 30,
         questions: [
           "How comfortable are you using Linux command-line tools?",
           "How comfortable are you managing files, users and permissions on a Linux server?",
@@ -281,7 +281,7 @@ export const techCareers: Career[] = [
         step: "Learn networking basics",
         detail:
           "Learn how IP addresses, DNS, ports and firewalls connect one machine to another.",
-        hours: 40,
+        hours: 25,
         questions: [
           "How comfortable are you working with networking concepts?",
           "How well do you understand IP addresses, DNS and ports?",
@@ -292,7 +292,7 @@ export const techCareers: Career[] = [
         step: "Learn cloud computing concepts",
         detail:
           "Understand compute, storage, databases and identity, and when to use each.",
-        hours: 50,
+        hours: 25,
         questions: [
           "How familiar are you with cloud computing concepts?",
           "How well do you understand virtual machines and cloud infrastructure?",
@@ -306,7 +306,7 @@ export const techCareers: Career[] = [
         step: "Practise with a cloud platform",
         detail:
           "Use one provider's free tier to launch a server, storage and a database, then automate it.",
-        hours: 90,
+        hours: 60,
         questions: [
           "How comfortable are you using a cloud platform such as AWS, Azure or Google Cloud?",
           "How familiar are you with containers such as Docker?",
@@ -320,7 +320,7 @@ export const techCareers: Career[] = [
         step: "Build cloud infrastructure projects",
         detail:
           "Deploy a real app, add monitoring, and write down what it costs to run each month.",
-        hours: 80,
+        hours: 50,
         questions: [
           "How capable are you of troubleshooting basic cloud infrastructure problems?",
           "How well can you manage and optimise cloud resources?",
@@ -392,7 +392,7 @@ export const techCareers: Career[] = [
         step: "Learn networking fundamentals",
         detail:
           "Learn how devices talk to each other: IP addresses, ports, protocols and firewalls.",
-        hours: 50,
+        hours: 25,
         questions: [
           "How familiar are you with network security concepts?",
           "How well do you understand how data moves across a network (IP addresses, ports and protocols)?",
@@ -403,7 +403,7 @@ export const techCareers: Career[] = [
         step: "Learn operating system security",
         detail:
           "Lock down a Windows and a Linux machine: users, permissions, updates and backups.",
-        hours: 50,
+        hours: 25,
         questions: [
           "How well do you understand passwords, authentication and access control?",
           "How familiar are you with security policies and best practices?",
@@ -415,7 +415,7 @@ export const techCareers: Career[] = [
         step: "Understand common security threats",
         detail:
           "Study how phishing, malware and web attacks really work, so you can spot them early.",
-        hours: 50,
+        hours: 30,
         questions: [
           "How familiar are you with basic cybersecurity concepts?",
           "How well do you understand common online security threats?",
@@ -429,7 +429,7 @@ export const techCareers: Career[] = [
         step: "Practise with security tools",
         detail:
           "Practise scanning, packet capture and log analysis in a safe lab, never on systems you do not own.",
-        hours: 70,
+        hours: 40,
         questions: [
           "How comfortable are you using security tools?",
           "How comfortable are you analysing basic security logs?",
@@ -441,7 +441,7 @@ export const techCareers: Career[] = [
         step: "Build practical cybersecurity projects",
         detail:
           "Complete guided labs and write up one assessment the way a professional report would read.",
-        hours: 80,
+        hours: 45,
         questions: [
           "How capable are you of identifying potential security risks?",
           "How comfortable are you responding to a basic security incident?",
@@ -513,7 +513,7 @@ export const techCareers: Career[] = [
         step: "Learn Excel and spreadsheets",
         detail:
           "Get fluent with formulas, lookups and PivotTables on a real dataset.",
-        hours: 40,
+        hours: 20,
         questions: [
           "How familiar are you with using Excel or Google Sheets to analyse data?",
           "How would you rate your ability to use formulas to analyse data?",
@@ -525,7 +525,7 @@ export const techCareers: Career[] = [
         step: "Learn SQL",
         detail:
           "Answer business questions with SELECT, WHERE, GROUP BY and JOIN.",
-        hours: 40,
+        hours: 25,
         questions: [
           "How familiar are you with writing SQL queries?",
           "How effectively can you filter, sort and group data?",
@@ -536,7 +536,7 @@ export const techCareers: Career[] = [
         step: "Practise data cleaning",
         detail:
           "Take a messy file and fix its duplicates, blanks and inconsistent formats.",
-        hours: 40,
+        hours: 25,
         questions: [
           "How well can you clean and organise a raw dataset?",
           "How easily can you identify errors or inconsistencies in data?",
@@ -548,7 +548,7 @@ export const techCareers: Career[] = [
         step: "Learn data visualisation",
         detail:
           "Build one dashboard in Power BI, Tableau or Looker Studio that answers a clear question.",
-        hours: 50,
+        hours: 30,
         questions: [
           "How comfortable are you creating charts and data visualisations?",
           "How comfortable are you using Power BI, Tableau or similar visualisation tools?",
@@ -560,7 +560,7 @@ export const techCareers: Career[] = [
         step: "Build data analysis projects",
         detail:
           "Publish two analyses, each ending in a recommendation somebody could act on.",
-        hours: 70,
+        hours: 40,
         questions: [
           "How well can you determine which data is relevant to a business problem?",
           "How effectively can you explain data findings to a non-technical person?",
@@ -628,7 +628,7 @@ export const techCareers: Career[] = [
         step: "Learn Python",
         detail:
           "Write Python comfortably, then load and reshape a dataset with pandas.",
-        hours: 80,
+        hours: 45,
         questions: [
           "How familiar are you with Python or R for data analysis?",
           "How comfortable are you working with libraries such as pandas, NumPy and scikit-learn?",
@@ -639,7 +639,7 @@ export const techCareers: Career[] = [
         step: "Build a foundation in statistics",
         detail:
           "Understand distributions, sampling and significance well enough to explain them aloud.",
-        hours: 60,
+        hours: 40,
         questions: [
           "How comfortable are you applying statistical methods to data?",
           "How well do you understand basic probability concepts?",
@@ -650,7 +650,7 @@ export const techCareers: Career[] = [
         step: "Learn data analysis and visualisation",
         detail:
           "Explore a new dataset end to end and show what you found in a handful of honest charts.",
-        hours: 60,
+        hours: 35,
         questions: [
           "How well can you prepare and clean datasets for analysis?",
           "How easily can you explore a dataset to identify relationships and patterns?",
@@ -662,7 +662,7 @@ export const techCareers: Career[] = [
         step: "Learn machine learning",
         detail:
           "Train, evaluate and improve a few standard models, and know why each one behaves as it does.",
-        hours: 100,
+        hours: 65,
         questions: [
           "How well do you understand supervised and unsupervised machine learning?",
           "How comfortable are you selecting an appropriate machine-learning algorithm for a problem?",
@@ -676,7 +676,7 @@ export const techCareers: Career[] = [
         step: "Build practical data science projects",
         detail:
           "Take two real datasets from raw files to a model, and write up what you learned.",
-        hours: 80,
+        hours: 55,
         questions: [
           "How effectively can you explain the results of a machine-learning model?",
           "How capable are you of applying data-science techniques to a real-world problem?",
@@ -754,7 +754,7 @@ export const techCareers: Career[] = [
         step: "Learn SQL",
         detail:
           "Write queries with joins, grouping and subqueries without looking up the syntax.",
-        hours: 50,
+        hours: 30,
         questions: [
           "How well can you write SQL queries?",
           "How comfortable are you joining several tables in one query?",
@@ -765,7 +765,7 @@ export const techCareers: Career[] = [
         step: "Learn Python",
         detail:
           "Write scripts that read files, call an API and save the result somewhere useful.",
-        hours: 70,
+        hours: 40,
         questions: [
           "How comfortable are you using Python or another programming language for data tasks?",
           "How well can you work with APIs to collect or transfer data?",
@@ -776,7 +776,7 @@ export const techCareers: Career[] = [
         step: "Understand databases",
         detail:
           "Design a small schema, load data into it and explain why the tables relate as they do.",
-        hours: 50,
+        hours: 30,
         questions: [
           "How familiar are you with relational databases?",
           "How clearly do you understand relationships between database tables?",
@@ -788,7 +788,7 @@ export const techCareers: Career[] = [
         step: "Learn data pipelines",
         detail:
           "Build a pipeline that extracts, cleans and loads data on a schedule.",
-        hours: 90,
+        hours: 55,
         questions: [
           "How well can you extract data from different sources?",
           "How capable are you of transforming raw data into usable formats?",
@@ -802,7 +802,7 @@ export const techCareers: Career[] = [
         step: "Build data engineering projects",
         detail:
           "Run a pipeline for a month, add data quality checks, and document how to fix it when it fails.",
-        hours: 80,
+        hours: 50,
         questions: [
           "How capable are you of identifying and troubleshooting problems in a data pipeline?",
           "How effectively can you maintain data quality and consistency?",

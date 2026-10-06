@@ -52,7 +52,10 @@ export interface Stage {
   step: string;
   /** What "done" looks like for this step. */
   detail: string;
-  /** Rough study hours for someone starting from zero. An estimate. */
+  /**
+   * Rough study hours for someone starting from zero who uses an AI
+   * tutor alongside free courses. An estimate; see the README.
+   */
   hours: number;
   /** Self-rating prompts, answered on the 1 to 5 scale. */
   questions: string[];

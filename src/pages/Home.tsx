@@ -130,7 +130,7 @@ function Home() {
               <strong>58%</strong>
               <span>
                 of the way across
-                <b>About 5 months to go at 7 hours a week</b>
+                <b>About 3 months to go at 7 hours a week</b>
               </span>
             </div>
 

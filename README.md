@@ -33,7 +33,9 @@ Software and cloud (Frontend Developer, Backend Developer, Cloud Engineer, Cyber
 
 **Timeline.** Each roadmap step has an estimated number of study hours. A step you rate as solid keeps 15% of its hours, and a step you have never tried keeps all of them. The remaining hours are divided by the hours you can give each week.
 
-The study hours and trait mixes are our own estimates. They are a starting point and should be checked against real learner data.
+**Where the study hours come from.** Each career's total starts from published benchmarks for job-ready, entry-level programmes, for example Google's career certificates (about 170 to 240 listed hours for Cybersecurity, UX Design, Data Analytics and Digital Marketing), Salesforce Administrator exam prep (60 to 120 hours) and AWS Cloud Practitioner plus Solutions Architect Associate (about 100 to 150 hours combined). We then assume the learner uses an AI assistant as a tutor: to explain concepts, answer questions and review their work. Controlled trials show guided AI tutoring speeds up learning (a Harvard physics trial found more than twice the learning gains in less time, and a World Bank pilot in Edo State saw large gains in six weeks), but also that using AI to do the work instead of learning it makes people worse once it is taken away (Bastani et al., PNAS 2025). So concept-heavy steps are cut by roughly 40% and hands-on project steps by roughly 20 to 25%, since practice and portfolio work still take real time. Totals now range from about 45 hours (AI Career Essentials) to about 240 hours (Data Scientist).
+
+The study hours and trait mixes are still our own estimates. They are a starting point and should be checked against real learner data.
 
 ## Tech stack
 

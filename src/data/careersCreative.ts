@@ -25,7 +25,7 @@ export const creativeCareers: Career[] = [
         step: "Learn design principles",
         detail:
           "Learn hierarchy, spacing, contrast and accessibility by recreating screens you admire.",
-        hours: 40,
+        hours: 20,
         questions: [
           "How well do you understand the difference between UI and UX design?",
           "How comfortable are you applying typography, spacing and visual hierarchy?",
@@ -37,7 +37,7 @@ export const creativeCareers: Career[] = [
         step: "Learn Figma",
         detail:
           "Build a five-screen app in Figma using frames, auto layout and components.",
-        hours: 50,
+        hours: 25,
         questions: [
           "How familiar are you with Figma or similar design tools?",
           "How well can you design interfaces for different screen sizes?",
@@ -48,7 +48,7 @@ export const creativeCareers: Career[] = [
         step: "Practise user research",
         detail:
           "Interview five people about one everyday problem and summarise what you heard.",
-        hours: 40,
+        hours: 25,
         questions: [
           "How familiar are you with conducting basic user research?",
           "How effectively can you identify user needs and pain points?",
@@ -61,7 +61,7 @@ export const creativeCareers: Career[] = [
         step: "Create wireframes and prototypes",
         detail:
           "Turn your research into a clickable prototype and test it with real people.",
-        hours: 60,
+        hours: 40,
         questions: [
           "How capable are you of creating wireframes?",
           "How easily can you create an interactive prototype?",
@@ -74,7 +74,7 @@ export const creativeCareers: Career[] = [
         step: "Build a UX portfolio",
         detail:
           "Write up two projects that show the problem, your process and what changed after testing.",
-        hours: 60,
+        hours: 40,
         questions: [
           "How comfortable are you explaining your design decisions to developers or clients?",
           "How prepared are you to take a design from user research through prototyping and testing?",
@@ -145,7 +145,7 @@ export const creativeCareers: Career[] = [
         step: "Learn UX fundamentals",
         detail:
           "Practise finding the real problem: research, personas, journeys and early concepts.",
-        hours: 50,
+        hours: 30,
         questions: [
           "How well can you identify problems that a digital product should solve?",
           "How familiar are you with user research techniques?",
@@ -158,7 +158,7 @@ export const creativeCareers: Career[] = [
         step: "Learn visual design",
         detail:
           "Design polished screens with consistent type, colour and spacing on mobile and desktop.",
-        hours: 50,
+        hours: 30,
         questions: [
           "How well can you create high-fidelity product interfaces?",
           "How well can you design experiences for different devices and screen sizes?",
@@ -169,7 +169,7 @@ export const creativeCareers: Career[] = [
         step: "Learn Figma",
         detail:
           "Build a small design system in Figma and use it to assemble screens quickly.",
-        hours: 50,
+        hours: 30,
         questions: [
           "How capable are you of creating wireframes?",
           "How familiar are you with Figma or similar design software?",
@@ -181,7 +181,7 @@ export const creativeCareers: Career[] = [
         step: "Practise prototyping",
         detail:
           "Prototype a full flow, test it with five people and change it based on what you see.",
-        hours: 50,
+        hours: 35,
         questions: [
           "How easily can you develop an interactive prototype?",
           "How familiar are you with usability testing?",
@@ -193,7 +193,7 @@ export const creativeCareers: Career[] = [
         step: "Build product design case studies",
         detail:
           "Write two case studies that show the trade-offs you made, not only the final screens.",
-        hours: 70,
+        hours: 40,
         questions: [
           "How well can you collaborate with product managers and developers?",
           "How capable are you of balancing user needs, business goals and technical limitations?",
@@ -264,7 +264,7 @@ export const creativeCareers: Career[] = [
         step: "Learn design principles",
         detail:
           "Learn hierarchy, alignment, contrast and balance by redesigning flyers you see around you.",
-        hours: 30,
+        hours: 15,
         questions: [
           "How familiar are you with the basic principles of graphic design?",
           "How well do you understand visual hierarchy and composition?",
@@ -276,7 +276,7 @@ export const creativeCareers: Career[] = [
         step: "Learn typography and colour",
         detail:
           "Build three colour palettes and three font pairings, and explain why each one works.",
-        hours: 30,
+        hours: 20,
         questions: [
           "How well do you understand typography and font pairing?",
           "How effectively can you use colour in a design?",
@@ -287,7 +287,7 @@ export const creativeCareers: Career[] = [
         step: "Learn design software",
         detail:
           "Get quick in one tool, then learn how to export correctly for print and for screens.",
-        hours: 60,
+        hours: 35,
         questions: [
           "How comfortable are you using design tools such as Canva, Photoshop or Illustrator?",
           "How well can you edit and prepare images for digital use?",
@@ -299,7 +299,7 @@ export const creativeCareers: Career[] = [
         step: "Practise creating visual assets",
         detail:
           "Produce a logo, a poster and a week of social posts for one made-up brand.",
-        hours: 60,
+        hours: 35,
         questions: [
           "How capable are you of creating social media graphics?",
           "How familiar are you with creating logos and simple brand identities?",
@@ -312,7 +312,7 @@ export const creativeCareers: Career[] = [
         step: "Build a design portfolio",
         detail:
           "Show eight strong pieces, each with the brief you were given and the thinking behind it.",
-        hours: 50,
+        hours: 35,
         questions: [
           "How effectively can you take feedback and revise a design?",
           "How well can you explain your design choices to a client?",
@@ -385,7 +385,7 @@ export const creativeCareers: Career[] = [
         step: "Learn content strategy",
         detail:
           "Pick one niche and one audience, and list thirty ideas they would care about.",
-        hours: 25,
+        hours: 15,
         questions: [
           "How comfortable are you developing ideas for digital content?",
           "How well can you identify content that will interest a target audience?",
@@ -397,7 +397,7 @@ export const creativeCareers: Career[] = [
         step: "Practise storytelling",
         detail:
           "Write hooks and short scripts until you can hold attention past the first three seconds.",
-        hours: 30,
+        hours: 20,
         questions: [
           "How well can you use storytelling to communicate an idea?",
           "How comfortable are you writing captions, scripts or short-form content?",
@@ -409,7 +409,7 @@ export const creativeCareers: Career[] = [
         step: "Learn basic video editing",
         detail:
           "Shoot and edit on your phone: clean cuts, clear audio, readable captions.",
-        hours: 50,
+        hours: 30,
         questions: [
           "How capable are you of creating videos for social media?",
           "How familiar are you with basic photo and video editing?",
@@ -421,7 +421,7 @@ export const creativeCareers: Career[] = [
         step: "Create content consistently",
         detail:
           "Keep a content calendar and publish on schedule for thirty days in a row.",
-        hours: 50,
+        hours: 35,
         questions: [
           "How familiar are you with creating content for social media?",
           "How effectively can you maintain a content calendar?",
@@ -433,7 +433,7 @@ export const creativeCareers: Career[] = [
         step: "Build a content portfolio",
         detail:
           "Collect your best pieces with their numbers, and say what you learned from each.",
-        hours: 40,
+        hours: 25,
         questions: [
           "How familiar are you with social media analytics?",
           "How effectively can you use audience feedback to improve your content?",
@@ -515,7 +515,7 @@ export const creativeCareers: Career[] = [
         step: "Learn audio fundamentals",
         detail:
           "Understand rhythm, pitch, song structure and how sound becomes a digital signal.",
-        hours: 30,
+        hours: 20,
         questions: [
           "How familiar are you with basic music production concepts?",
           "How comfortable are you arranging music or audio tracks?",
@@ -526,7 +526,7 @@ export const creativeCareers: Career[] = [
         step: "Learn a digital audio workstation",
         detail:
           "Pick one DAW and build a full beat or edit a full episode inside it.",
-        hours: 50,
+        hours: 30,
         questions: [
           "How comfortable are you using a digital audio workstation?",
           "How familiar are you with creating or editing sound effects?",
@@ -537,7 +537,7 @@ export const creativeCareers: Career[] = [
         step: "Practise recording and editing",
         detail:
           "Record a voice in an ordinary room and edit it until it is clean and tight.",
-        hours: 60,
+        hours: 40,
         questions: [
           "How well do you understand recording and microphone techniques?",
           "How familiar are you with audio editing?",
@@ -551,7 +551,7 @@ export const creativeCareers: Career[] = [
         step: "Learn mixing techniques",
         detail:
           "Balance levels, then use EQ, compression and reverb with a reason for each move.",
-        hours: 70,
+        hours: 50,
         questions: [
           "How well do you understand basic mixing concepts?",
           "How familiar are you with equalisation and compression?",
@@ -564,7 +564,7 @@ export const creativeCareers: Career[] = [
         step: "Build an audio portfolio",
         detail:
           "Finish and release three pieces. Finished and imperfect beats perfect and unreleased.",
-        hours: 60,
+        hours: 45,
         questions: [
           "How effectively can you take creative direction and revise an audio project?",
           "How prepared are you to complete an audio project from recording through final export?",
