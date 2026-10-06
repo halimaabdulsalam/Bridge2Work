@@ -212,6 +212,22 @@ function Results() {
                       ? ` (${timeAtPace(item.remainingHours, hoursPerWeek)}).`
                       : "."}
                   </p>
+                  <p
+                    className={
+                      item.overrated
+                        ? "plan-step-check is-overrated"
+                        : "plan-step-check"
+                    }
+                  >
+                    <Icon name={item.checkCorrect ? "check" : "x"} size={15} />
+                    <span>
+                      {item.checkCorrect
+                        ? "Reality check: answered correctly."
+                        : item.overrated
+                          ? "Reality check: missed, though you rated this step highly. Test it before you skip ahead."
+                          : "Reality check: missed. This step will cover it."}
+                    </span>
+                  </p>
                 </div>
               </li>
             ))}
@@ -302,7 +318,7 @@ function Results() {
         </div>
 
         <p className="results-disclaimer">
-          This result is based on how you rated yourself, plus three short
+          This result is based on how you rated yourself, plus five short
           questions. Treat it as a guide to where to spend your time, not a
           certificate. Study hours are estimates.
         </p>

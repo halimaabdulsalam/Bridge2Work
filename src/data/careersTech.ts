@@ -86,38 +86,58 @@ export const techCareers: Career[] = [
     checks: [
       {
         question:
-          "A page looks fine on your laptop but the text spills off the screen on a phone. What do you reach for first?",
+          "Your page looks fine on a laptop, but on a phone it is zoomed out and the text is tiny, even though your CSS has media queries. What is most likely missing?",
         options: [
-          "A faster web host",
-          "Flexible layout and a CSS media query",
-          "A bigger font file",
-          "A JavaScript timer",
+          "The viewport meta tag in the page's head",
+          "A min-width rule on the body element",
+          "A larger base font size in the stylesheet",
+          "A separate stylesheet just for phones",
         ],
-        answer: 1,
-        why: "This is a layout problem. Flexible units and media queries let one page adapt to any screen.",
+        answer: 0,
+        why: "Without the viewport meta tag, phones lay the page out at desktop width and shrink it, so your media queries never match the real screen.",
       },
       {
         question:
-          "In React, a value changes and the screen needs to update. What is the right way to do it?",
+          "You call fetch() and log the result on the next line. The console shows Promise {<pending>}. Why?",
         options: [
-          "Keep it in state and change it with the setter",
-          "Edit the HTML in the browser inspector",
-          "Reload the page with JavaScript",
-          "Change the variable directly",
+          "The API sent back an error status code",
+          "The browser blocked the request for security",
+          "fetch is asynchronous and was not awaited",
+          "The response body is not valid JSON",
         ],
-        answer: 0,
-        why: "React re-renders when state changes through its setter. Changing a plain variable tells React nothing.",
+        answer: 2,
+        why: "fetch returns a promise straight away. Use await, or .then, to get the response once it arrives.",
       },
       {
-        question: "What does the command git commit do?",
+        question:
+          "In React, you add to a list with items.push(newItem), but the screen does not update. Why?",
         options: [
-          "Uploads your site to the internet",
-          "Installs your project's packages",
-          "Deletes old versions of your files",
-          "Saves a snapshot of your staged changes in the project history",
+          "Each list item is missing a key prop",
+          "The component needs useEffect to re-render",
+          "The browser is showing a cached version",
+          "State was mutated instead of set to a new array",
         ],
         answer: 3,
-        why: "A commit records a snapshot locally. Pushing and deploying are separate steps.",
+        why: "React re-renders when you call the setter with a new value, such as setItems([...items, newItem]). Changing the old array in place tells React nothing.",
+      },
+      {
+        question:
+          "TypeScript reports: Argument of type 'string' is not assignable to parameter of type 'number'. What does it mean?",
+        options: [
+          "A function that expects a number was given text",
+          "The number is too large for the variable",
+          "The file must be compiled to JavaScript first",
+          "A variable was used before it was declared",
+        ],
+        answer: 0,
+        why: "Read type errors as 'expected this, got that'. Convert the value, for example with Number(), or fix the place it came from.",
+      },
+      {
+        question:
+          "You ran git commit, but your teammate cannot see your changes on GitHub. Which step did you skip?",
+        options: ["git pull", "git push", "git merge", "git clone"],
+        answer: 1,
+        why: "A commit is saved only on your own machine. git push sends it to GitHub.",
       },
     ],
     resources: [resources.freeCodeCamp, resources.odin, resources.mdn],
@@ -209,33 +229,61 @@ export const techCareers: Career[] = [
     checks: [
       {
         question:
-          "An app sends a request to create a new user. Which HTTP method fits best?",
-        options: ["GET", "POST", "DELETE", "OPTIONS"],
+          "A function works for most inputs but crashes when it receives an empty list. What is the best way to stop this happening again?",
+        options: [
+          "Wrap the whole program in one try/catch",
+          "Handle the empty case and add a test for it",
+          "Restart the server automatically after crashes",
+          "Document that callers must not send empty lists",
+        ],
         answer: 1,
-        why: "POST creates a resource. GET should only ever read data.",
+        why: "Fix the edge case where it happens and lock the fix in with a test. Catching everything or auto-restarting only hides the bug.",
+      },
+      {
+        question:
+          "A request arrives with no login token for a route that requires one. Which status code should the API return?",
+        options: [
+          "400 Bad Request",
+          "403 Forbidden",
+          "401 Unauthorized",
+          "500 Internal Server Error",
+        ],
+        answer: 2,
+        why: "401 means the API does not know who you are. 403 is for a known user who is not allowed, and 5xx codes are for faults on the server.",
+      },
+      {
+        question:
+          "You have a users table and an orders table. How should each order record which user placed it?",
+        options: [
+          "Copy the user's name and email into the order",
+          "Keep a list of order ids inside the user's row",
+          "Create a separate orders table for each user",
+          "A user_id column that is a foreign key to users",
+        ],
+        answer: 3,
+        why: "A foreign key links the two rows without duplicating data that could go out of date, and the database can enforce that the user exists.",
       },
       {
         question: "How should a user's password be stored?",
         options: [
-          "In plain text, so support can look it up",
-          "In the page URL, so it is easy to pass around",
-          "Hashed with a slow algorithm such as bcrypt or Argon2",
-          "Encoded in Base64",
+          "Encrypted with AES, so admins can recover it",
+          "Hashed once with SHA-256",
+          "Hashed with bcrypt or Argon2",
+          "Encoded in Base64 before saving",
         ],
         answer: 2,
-        why: "Passwords are hashed, never stored in a readable form. Base64 is encoding, not protection.",
+        why: "Password hashes should be slow and salted so stolen ones are hard to crack. SHA-256 is far too fast, encryption can be reversed, and Base64 is no protection at all.",
       },
       {
-        question:
-          "You have a users table and an orders table. How does an order point at the user who made it?",
+        question: "Where should your production database password live?",
         options: [
-          "With a foreign key that holds the user's id",
-          "By copying the user's full details into every order",
-          "By storing both tables in one text column",
-          "By keeping the rows in the same order",
+          "Hard-coded in a config.js file",
+          "In a .env file committed to Git",
+          "In the README so the team can find it",
+          "In the server's environment variables",
         ],
-        answer: 0,
-        why: "A foreign key links the two rows without duplicating data that could go out of date.",
+        answer: 3,
+        why: "Secrets stay out of the code and out of Git. Anything committed can leak, even from a private repository.",
       },
     ],
     resources: [resources.odin, resources.freeCodeCamp, resources.roadmapSh],
@@ -331,34 +379,63 @@ export const techCareers: Career[] = [
     checks: [
       {
         question:
-          "An app runs on your laptop but breaks on the server. What does a container such as Docker mainly fix?",
+          "A script on a Linux server will not run and says 'Permission denied'. What usually fixes it?",
         options: [
-          "It makes the internet connection faster",
-          "It packages the app with everything it needs, so it runs the same everywhere",
-          "It replaces the need for a database",
-          "It encrypts the source code",
+          "Rename the file so it ends in .exe",
+          "Give it execute permission with chmod +x",
+          "Run every command with sudo from now on",
+          "Reinstall the operating system packages",
         ],
         answer: 1,
-        why: "Containers bundle the app with its dependencies, which removes the 'works on my machine' problem.",
+        why: "Files need execute permission to run as programs. Using sudo for everything hides the real problem and is a security risk.",
       },
       {
         question:
-          "Which service turns a name like example.com into an IP address?",
-        options: ["DHCP", "SSH", "DNS", "HTTP"],
-        answer: 2,
-        why: "DNS is the internet's address book. Many 'the site is down' problems are really DNS problems.",
-      },
-      {
-        question:
-          "You leave a large virtual machine running all weekend with nobody using it. What happens on most cloud platforms?",
+          "You moved a website to a new server, but for a few hours some people still reach the old one. What is the likely reason?",
         options: [
-          "You keep paying for it until you stop it",
-          "It deletes itself after an hour",
-          "It becomes free while idle",
-          "It pauses automatically at midnight",
+          "DNS answers are cached until their TTL expires",
+          "The new server's firewall is blocking them",
+          "Their browsers do not support the new server",
+          "The SSL certificate has not been renewed yet",
         ],
         answer: 0,
-        why: "Cloud is pay-as-you-go. An idle machine still costs money, which is why watching cost is part of the job.",
+        why: "Resolvers cache DNS records for the record's TTL. Lowering the TTL before a move shortens the changeover.",
+      },
+      {
+        question:
+          "A developer needs to upload files to one storage bucket. What access should their account get?",
+        options: [
+          "Full administrator access, to avoid delays",
+          "The root account login, shared securely",
+          "Write access to that one bucket only",
+          "Read-only access to every service",
+        ],
+        answer: 2,
+        why: "This is least privilege: give exactly what the task needs. A leaked admin key can take down the whole account.",
+      },
+      {
+        question:
+          "Your app server must reach the database, but nobody on the internet should. How do you set it up?",
+        options: [
+          "Private subnet, with a rule allowing only the app server",
+          "A public IP, protected by a very strong password",
+          "A public IP on a non-standard port number",
+          "A public IP with encryption turned on for the disks",
+        ],
+        answer: 0,
+        why: "Keep the database off the internet entirely and let its security group accept traffic only from the app server. Hidden ports and strong passwords are not a boundary.",
+      },
+      {
+        question:
+          "You stop a virtual machine for the weekend instead of deleting it. What are you still billed for?",
+        options: [
+          "Nothing, because a stopped machine is free",
+          "Its attached disks and any reserved IP address",
+          "The full hourly price, as if it were running",
+          "Only the network traffic it used last week",
+        ],
+        answer: 1,
+        why: "Stopping ends the compute charge, but storage and reserved addresses keep billing. Watching small leftovers like these is part of managing cost.",
       },
     ],
     resources: [resources.awsSkillBuilder, resources.msLearn, resources.netacad],
@@ -452,38 +529,62 @@ export const techCareers: Career[] = [
     checks: [
       {
         question:
-          "An email from 'your bank' urgently asks you to confirm your PIN through a link. What is this most likely to be?",
+          "Which of these sends your password across the network encrypted?",
         options: [
-          "A routine security update",
-          "Phishing",
-          "A software patch",
-          "Two-factor authentication",
-        ],
-        answer: 1,
-        why: "Urgency, a link and a request for secrets are the classic signs of phishing. Banks do not ask for a PIN by email.",
-      },
-      {
-        question: "What does two-factor authentication add to a login?",
-        options: [
-          "A longer password",
-          "Automatic backups of your account",
-          "A faster way to log in",
-          "A second proof of identity, such as a code on your phone",
+          "Logging in through an HTTP form",
+          "A Telnet session",
+          "An FTP upload",
+          "An SSH session",
         ],
         answer: 3,
-        why: "A stolen password alone is no longer enough, because the attacker also needs the second factor.",
+        why: "SSH encrypts everything. HTTP, Telnet and FTP send data, passwords included, in plain text that anyone on the path can read.",
       },
       {
         question:
-          "You notice a serious weakness in a company's website. What is the professional thing to do?",
+          "A colleague's account logs in from another country while they are sitting at their desk. What is the best first action?",
         options: [
-          "Report it privately to the company and do not exploit it",
-          "Post it on social media to warn people",
-          "Use it to show how skilled you are",
-          "Say nothing",
+          "Wait to see whether it happens again",
+          "Ask them to change their password next month",
+          "Disable the account and end its active sessions",
+          "Block that country from the company website",
+        ],
+        answer: 2,
+        why: "Treat it as a compromise: cut off the attacker's access first, then reset credentials and investigate how it happened.",
+      },
+      {
+        question: "Which of these links really belongs to PayPal?",
+        options: [
+          "https://paypal.com.account-verify.net/login",
+          "https://www.paypal.com/signin",
+          "https://paypal-secure-login.com/signin",
+          "https://login.paypal.com.security-check.io",
+        ],
+        answer: 1,
+        why: "Read the domain just before the first single slash. The others belong to account-verify.net, paypal-secure-login.com and security-check.io.",
+      },
+      {
+        question:
+          "Logs show 600 failed logins for 'admin' from one IP address in five minutes, then one success. What is most likely?",
+        options: [
+          "A password-guessing attack that has now succeeded",
+          "The administrator forgot their password",
+          "The server is overloaded and rejecting logins",
+          "A scheduled backup job signing in repeatedly",
         ],
         answer: 0,
-        why: "This is responsible disclosure. Testing or exploiting a system without permission is illegal, whatever your intentions.",
+        why: "Hundreds of rapid failures from one source is brute forcing. The final success means the account is compromised, so respond now.",
+      },
+      {
+        question:
+          "During an authorised test of one web app, you notice a weakness on a server outside the scope you were given. What do you do?",
+        options: [
+          "Test it carefully to confirm it is real",
+          "Ignore it, since it is out of scope",
+          "Add it to your scan list for tomorrow",
+          "Report it to your contact without testing it",
+        ],
+        answer: 3,
+        why: "Permission defines what you may touch. Testing outside scope is unauthorised access even during a paid engagement, so report it and let the owner decide.",
       },
     ],
     resources: [resources.netacad, resources.tryHackMe, resources.portswigger],
@@ -572,33 +673,58 @@ export const techCareers: Career[] = [
     checks: [
       {
         question:
-          "A sales sheet lists one city as 'Lagos', 'lagos ' and 'LAGOS'. What do you do before counting customers per city?",
+          "Your VLOOKUP returns #N/A for a product code you can see in the other sheet. What is the most common cause?",
         options: [
-          "Count them as three different cities",
-          "Delete every row that looks odd",
-          "Clean the values so they match: trim spaces and fix the case",
-          "Sort the column from A to Z",
+          "The lookup range is not sorted A to Z",
+          "Hidden spaces, or numbers stored as text",
+          "The formula must be on the same sheet",
+          "The workbook has not been saved yet",
         ],
-        answer: 2,
-        why: "Inconsistent text splits one group into several. Cleaning comes before counting.",
-      },
-      {
-        question: "Which SQL clause gives you total sales for each product?",
-        options: ["ORDER BY", "GROUP BY", "LIMIT", "DISTINCT"],
         answer: 1,
-        why: "GROUP BY collects rows per product so SUM can total each group.",
+        why: "'A101 ' and 'A101', or 101 and '101', look identical but do not match. TRIM and VALUE fix most #N/A surprises.",
       },
       {
         question:
-          "Ice cream sales and sunburn cases rise in the same months. What can you safely conclude?",
+          "You want only the products whose total sales are over ₦1m. Which SQL clause holds that condition?",
+        options: ["WHERE", "ORDER BY", "HAVING", "LIMIT"],
+        answer: 2,
+        why: "WHERE filters rows before they are grouped. HAVING filters the groups after SUM has been calculated.",
+      },
+      {
+        question:
+          "Nine staff earn about ₦150,000 a month and the owner earns ₦5,000,000. Which number best describes a typical salary?",
         options: [
-          "They move together, but that alone does not prove one causes the other",
-          "Ice cream causes sunburn",
-          "Sunburn makes people buy ice cream",
-          "The data must be wrong",
+          "The mean",
+          "The range",
+          "The standard deviation",
+          "The median",
+        ],
+        answer: 3,
+        why: "The owner drags the mean up to ₦635,000, which nobody actually earns. The median is the middle value and ignores outliers.",
+      },
+      {
+        question:
+          "You need to show how monthly sales changed over a year. Which chart fits best?",
+        options: [
+          "A line chart",
+          "A pie chart",
+          "A scatter plot",
+          "A stacked donut chart",
         ],
         answer: 0,
-        why: "Correlation is not causation. Hot weather is likely driving both.",
+        why: "Line charts show change over time. Pie charts compare parts of one whole and hide the trend.",
+      },
+      {
+        question:
+          "Customers in the loyalty programme spend 40% more than others. What can you tell the manager?",
+        options: [
+          "Joining the programme makes customers spend 40% more",
+          "Big spenders may just join more: it is a link, not proof",
+          "Everyone should be pushed to join, to lift spend by 40%",
+          "Nothing, because loyalty data cannot be measured",
+        ],
+        answer: 1,
+        why: "This is correlation. People who already spend a lot are more likely to join, so compare similar customers or run a test before claiming the programme caused it.",
       },
     ],
     resources: [resources.kaggle, resources.sqlbolt, resources.msLearn],
@@ -686,39 +812,62 @@ export const techCareers: Career[] = [
     ],
     checks: [
       {
+        question: "In pandas, what does df[df['age'] > 30] return?",
+        options: [
+          "True or False for every row",
+          "Nothing: it deletes rows aged 30 or under",
+          "A new DataFrame of rows where age is over 30",
+          "Only the age column, sorted from high to low",
+        ],
+        answer: 2,
+        why: "The inner part builds a True/False mask, and indexing with it returns the matching rows as a new DataFrame. The original df is unchanged.",
+      },
+      {
+        question: "An A/B test gives p = 0.03. What does that mean?",
+        options: [
+          "There is a 97% chance that the new version is truly better",
+          "With no real difference, a result this extreme is rare (3%)",
+          "The new version performs 3% better than the old one",
+          "Only 3% of users were shown the new version",
+        ],
+        answer: 1,
+        why: "A p-value assumes there is no effect and asks how surprising the data would be. It is not the probability that your idea is true.",
+      },
+      {
+        question:
+          "Before modelling, you find 40% of the income column is blank. What is the best first step?",
+        options: [
+          "Fill every blank with zero",
+          "Delete every row with a blank income",
+          "Let the model handle the blanks itself",
+          "Find out why it is missing, then decide",
+        ],
+        answer: 3,
+        why: "Zero is a real income, and dropping 40% of rows can bias the sample. Whether the blanks are random or systematic decides the right fix.",
+      },
+      {
         question:
           "Your model scores 99% on its training data but 60% on new data. What is going on?",
         options: [
-          "Underfitting",
           "Overfitting",
-          "The model is finished",
-          "The test data is broken",
+          "Underfitting",
+          "The learning rate is too low",
+          "The test set is too large",
         ],
-        answer: 1,
+        answer: 0,
         why: "The model has memorised the training data instead of learning a pattern that generalises.",
       },
       {
-        question: "Why do you split data into training and test sets?",
-        options: [
-          "To make training faster",
-          "To remove outliers automatically",
-          "To double the size of the dataset",
-          "To check how the model performs on data it has never seen",
-        ],
-        answer: 3,
-        why: "Performance on unseen data is the only honest measure of whether a model will work in real use.",
-      },
-      {
         question:
-          "You want to predict the price of a house in naira. What kind of problem is that?",
+          "Fraud is 1% of transactions. A model that always predicts 'not fraud' scores 99% accuracy. What is wrong?",
         options: [
-          "Regression",
-          "Classification",
-          "Clustering",
-          "Dimensionality reduction",
+          "Nothing, because 99% accuracy is excellent for any model",
+          "Accuracy hides it: check recall on the fraud class",
+          "The model needs more training epochs",
+          "The features need to be normalised first",
         ],
-        answer: 0,
-        why: "Predicting a number is regression. Predicting a category, such as spam or not spam, is classification.",
+        answer: 1,
+        why: "When one class is rare, accuracy rewards ignoring it. Precision and recall on the fraud class show whether the model is any use.",
       },
     ],
     resources: [resources.kaggle, resources.cs50p, resources.khanStats],
@@ -813,33 +962,58 @@ export const techCareers: Career[] = [
     ],
     checks: [
       {
-        question: "In ETL, what happens in the T step?",
+        question:
+          "Which approach lists customers who have never placed an order?",
         options: [
-          "Transfer: files are moved between servers",
-          "Transform: data is cleaned and reshaped into a usable format",
-          "Test: the dashboard is checked",
-          "Trigger: the job is started",
+          "INNER JOIN orders, then keep every row",
+          "LEFT JOIN orders, keep rows where the order id IS NULL",
+          "RIGHT JOIN customers, keep rows where the order id = 0",
+          "INNER JOIN orders, keep customers where COUNT(*) = 0",
         ],
         answer: 1,
-        why: "Extract, Transform, Load. Transform is where raw data becomes something analysts can use.",
+        why: "A LEFT JOIN keeps every customer, and those with no match get NULLs in the order columns. An INNER JOIN drops them entirely.",
+      },
+      {
+        question:
+          "An API returns 100 records per call, but the source holds 25,000. Your script saves only 100. What did it miss?",
+        options: [
+          "A faster internet connection on the server",
+          "Converting the JSON to CSV first",
+          "A longer timeout on each request",
+          "Pagination: fetching every page in turn",
+        ],
+        answer: 3,
+        why: "APIs split large results into pages. Your script must follow the next-page link or offset until the last page.",
+      },
+      {
+        question:
+          "Which column makes the best primary key for a customers table?",
+        options: [
+          "Email address, since each is unique",
+          "Phone number, since it rarely changes",
+          "Full name plus date of birth",
+          "An auto-generated customer_id",
+        ],
+        answer: 3,
+        why: "A key must be unique and never change. People change emails and phones and share names, but a generated id does neither.",
+      },
+      {
+        question: "In an ELT setup, where does the transform step happen?",
+        options: [
+          "Before the data leaves the source system",
+          "On a server between extract and load",
+          "Inside the warehouse, after loading",
+          "In the dashboard tool when it is read",
+        ],
+        answer: 2,
+        why: "ELT loads raw data first and transforms it inside the warehouse, usually with SQL. In classic ETL, transforming happens before loading.",
       },
       {
         question:
           "A nightly pipeline fails halfway. Which property lets you run it again without creating duplicate data?",
-        options: ["Idempotency", "Latency", "Encryption", "Compression"],
+        options: ["Idempotency", "Latency", "Concurrency", "Compression"],
         answer: 0,
         why: "An idempotent job gives the same result however many times it runs, so re-running is safe.",
-      },
-      {
-        question: "What is the job of a primary key?",
-        options: [
-          "To encrypt a table",
-          "To speed up the internet connection",
-          "To uniquely identify each row in a table",
-          "To store the largest value",
-        ],
-        answer: 2,
-        why: "A primary key is the unique identifier that other tables use to refer to a row.",
       },
     ],
     resources: [resources.deZoomcamp, resources.sqlbolt, resources.cs50p],

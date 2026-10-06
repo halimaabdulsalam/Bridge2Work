@@ -90,39 +90,63 @@ export const businessCareers: Career[] = [
     ],
     checks: [
       {
-        question:
-          "The team has time for one feature this month. Which one do you build?",
+        question: "Which is the best goal for a checkout redesign?",
         options: [
-          "The one the CEO mentioned most recently",
-          "The one with the best balance of user value and effort, backed by evidence",
-          "The one that is most fun for the team",
-          "The one a competitor just launched",
+          "Ship the new checkout by the end of March",
+          "Raise checkout completion from 40% to 55%",
+          "Add Apple Pay, saved cards and coupons",
+          "Make checkout feel modern and clean",
         ],
         answer: 1,
-        why: "Prioritisation weighs value against cost using evidence, not the loudest or latest opinion.",
-      },
-      {
-        question: "Which of these is a well-formed user story?",
-        options: [
-          "Add a blue button to the home page",
-          "The database needs a new index",
-          "As a shopper, I want to save my cart so that I can finish buying later",
-          "Make the app better",
-        ],
-        answer: 2,
-        why: "A user story names who wants something, what they want and why. It leaves the solution to the team.",
+        why: "A good goal is a measurable change in what users do. Dates and feature lists are outputs, not outcomes.",
       },
       {
         question:
-          "You launched a feature last month. What is the best way to know whether it worked?",
+          "Several users ask for an 'Export to Excel' button. What do you do first?",
         options: [
-          "Compare the metric you set as the goal, before and after launch",
-          "Count how many people on the team like it",
-          "Check that it has no bugs",
-          "Ask the designer",
+          "Build it, since users asked for it",
+          "Add it to the bottom of the backlog",
+          "Ask what they do with the export afterwards",
+          "Survey every user on whether they want it",
+        ],
+        answer: 2,
+        why: "Requests describe a solution. Learning the job behind it, such as sending a weekly report, often reveals a better fix.",
+      },
+      {
+        question:
+          "Feature A helps 5,000 users and takes 4 weeks. Feature B helps 4,000 users about as much and takes 1 week. Which goes first?",
+        options: [
+          "A, because it reaches more users",
+          "A, because bigger features matter more",
+          "Whichever the engineers would prefer",
+          "B, because it gives far more value per week",
+        ],
+        answer: 3,
+        why: "Weigh value against cost. B delivers about 4,000 users' worth of value per week of effort, while A delivers about 1,250.",
+      },
+      {
+        question:
+          "Which is a good acceptance criterion for a 'save my cart' feature?",
+        options: [
+          "Saved items still appear after logging out and in",
+          "The cart feature should be simple and user-friendly",
+          "Cart contents are stored in a Redis cache",
+          "The whole feature is finished and live by Friday",
         ],
         answer: 0,
-        why: "Success is defined before launch as a measurable outcome. Shipping without bugs is not the same as working.",
+        why: "Acceptance criteria are testable statements of behaviour. 'User-friendly' cannot be tested, and storage choices belong to engineers.",
+      },
+      {
+        question:
+          "Daily active users rose 20% the week your feature launched, the same week a big ad campaign ran. What can you conclude?",
+        options: [
+          "The feature caused the rise, since it is new",
+          "The campaign caused it, since adverts drive traffic",
+          "Nothing yet: compare users with and without it",
+          "Each one caused about half of the 20% rise",
+        ],
+        answer: 2,
+        why: "Two changes landed together, so the total cannot be split by guessing. A holdout group or an A/B test isolates the feature's effect.",
       },
     ],
     resources: [
@@ -219,37 +243,61 @@ export const businessCareers: Career[] = [
     ],
     checks: [
       {
-        question: "Which of these is positioning, not a feature list?",
+        question:
+          "You keep losing deals to a cheaper competitor. What is the best first move?",
         options: [
-          "Has 12 integrations and dark mode",
-          "For freelancers who hate paperwork, the invoicing app that gets you paid in two taps",
-          "Version 3.2 is now available",
-          "Built with modern technology",
-        ],
-        answer: 1,
-        why: "Positioning says who it is for, what it is and why it is the better choice for them.",
-      },
-      {
-        question: "Before writing launch messaging, what do you need to learn first?",
-        options: [
-          "Who the customer is and what problem they are trying to solve",
-          "Which font the brand uses",
-          "How many slides the deck needs",
-          "What time to post",
+          "Learn which customers choose you, and why",
+          "Cut your price so it sits below theirs",
+          "Add more features than they currently have",
+          "Outspend them on adverts for a quarter",
         ],
         answer: 0,
-        why: "Messaging only works when it starts from the customer's problem in the customer's own words.",
+        why: "Win/loss research shows where you are strongest. Price wars and feature races are expensive and easy for a rival to match.",
       },
       {
-        question: "Which of these is a benefit, not a feature?",
+        question: "Which is the strongest positioning statement?",
         options: [
-          "256GB of storage",
-          "A 5,000mAh battery",
-          "Never run out of space for your photos",
-          "An aluminium frame",
+          "The all-in-one finance platform for every modern business",
+          "AI-powered invoicing software with 12 integrations and dark mode",
+          "For freelancers tired of chasing clients: invoices paid in two taps",
+          "Nigeria's fastest-growing and most trusted fintech app",
         ],
         answer: 2,
-        why: "A feature is what the product has. A benefit is what the customer gets out of it.",
+        why: "Positioning names a specific customer, their problem and why you are the better choice. Feature lists and broad claims do not.",
+      },
+      {
+        question: "Which of these deserves your biggest launch effort?",
+        options: [
+          "A redesigned settings page",
+          "A new product for a new customer segment",
+          "A fix for a bug that affected 2% of users",
+          "Faster loading on the dashboard",
+        ],
+        answer: 1,
+        why: "Launch effort scales with market impact. A new product for new buyers needs positioning, sales training and channels; a small improvement needs a changelog note.",
+      },
+      {
+        question:
+          "Customers call your app 'the thing that stops me chasing payments'. Your website says 'AI-powered invoicing platform'. What do you do?",
+        options: [
+          "Keep the site, since 'AI-powered' sounds modern",
+          "Put both phrases on every page",
+          "Ask the sales team which phrase they prefer",
+          "Test a headline written in customers' words",
+        ],
+        answer: 3,
+        why: "Customers' own words match how buyers think about the problem. Test the new headline against the current one to confirm.",
+      },
+      {
+        question: "Which metric best shows whether a feature launch landed?",
+        options: [
+          "Share of target customers using it after 30 days",
+          "Likes and comments on the launch announcement",
+          "Number of press articles written about it",
+          "Visits to the launch blog post in week one",
+        ],
+        answer: 0,
+        why: "Attention is not adoption. The point of a launch is that the right customers start using the product.",
       },
     ],
     resources: [resources.hubspot, resources.pma, resources.skillshop],
@@ -337,33 +385,63 @@ export const businessCareers: Career[] = [
     checks: [
       {
         question:
-          "You spent ₦20,000 on adverts and they brought in ₦60,000 of sales. What does that tell you?",
+          "A clothing brand's adverts get lots of clicks but almost no sales. Where do you look first?",
         options: [
-          "The adverts returned ₦3 in sales for every ₦1 spent",
-          "The campaign lost money",
-          "Nothing, because sales are not a marketing number",
-          "You need more hashtags",
+          "Raising the daily budget to get more clicks",
+          "Moving the adverts to a different platform",
+          "The landing page the advert sends people to",
+          "Adding more hashtags to each advert",
         ],
-        answer: 0,
-        why: "Return on ad spend is revenue divided by cost: 60,000 ÷ 20,000 = 3.",
-      },
-      {
-        question: "What is SEO mainly about?",
-        options: [
-          "Paying for adverts on Instagram",
-          "Helping your pages show up in unpaid search results",
-          "Sending bulk SMS",
-          "Designing logos",
-        ],
-        answer: 1,
-        why: "Search engine optimisation earns visits from search without paying for each click.",
+        answer: 2,
+        why: "Clicks prove the advert works, so the drop happens after the click. Check that the page loads fast, keeps the advert's promise and makes buying easy.",
       },
       {
         question:
-          "1,000 people saw your advert and 30 clicked it. What is the click-through rate?",
-        options: ["0.3%", "30%", "3%", "300%"],
+          "A client wants to post daily but can only produce three good posts a week. What do you advise?",
+        options: [
+          "Post daily, filling gaps with quick filler posts",
+          "Post three strong pieces a week on a fixed schedule",
+          "Post only when there is a sale or an offer",
+          "Batch all three posts together on Monday",
+        ],
+        answer: 1,
+        why: "Consistency and quality beat volume. A schedule you can keep builds a habit with your audience, while filler trains them to scroll past.",
+      },
+      {
+        question:
+          "Which change is most likely to help a bakery's page rank for 'birthday cakes in Ikeja'?",
+        options: [
+          "Boosting the page with Instagram adverts",
+          "Repeating 'cake' many times in hidden text",
+          "Adding more photos without any descriptions",
+          "Naming the service and area in titles and text",
+        ],
+        answer: 3,
+        why: "Search engines rank pages that clearly answer the search. Hidden keyword stuffing gets penalised, and paid adverts do not change organic ranking.",
+      },
+      {
+        question:
+          "Adverts cost ₦20,000 and brought in ₦60,000 of sales, a ROAS of 3. Was the campaign profitable?",
+        options: [
+          "Yes, it made ₦40,000 of profit",
+          "Yes, any ROAS above 1 is profit",
+          "Not necessarily: it depends on costs",
+          "No, a ROAS below 5 always loses",
+        ],
         answer: 2,
-        why: "Clicks divided by views: 30 ÷ 1,000 = 3%.",
+        why: "ROAS uses revenue, not profit. If the goods cost ₦45,000 to make, the campaign lost ₦5,000.",
+      },
+      {
+        question:
+          "You run the same offer on Instagram, WhatsApp and email. How do you know which channel brought each sale?",
+        options: [
+          "Ask a few customers where they heard",
+          "Use a separate UTM-tagged link per channel",
+          "Compare follower counts on each channel",
+          "Post on each channel on a different day",
+        ],
+        answer: 1,
+        why: "UTM tags label each link, so analytics can credit visits and sales to the right channel. Asking customers helps but is unreliable at scale.",
       },
     ],
     resources: [resources.skillshop, resources.hubspot, resources.metaBlueprint],
@@ -458,39 +536,53 @@ export const businessCareers: Career[] = [
     checks: [
       {
         question:
+          "A client wants a partner to suggest changes to a Google Doc without changing the text directly. Which access do you give?",
+        options: ["Viewer", "Commenter", "Editor", "Owner"],
+        answer: 1,
+        why: "Commenters can leave comments and suggestions that the owner accepts or rejects. Editors change the text directly.",
+      },
+      {
+        question:
+          "You realise at 11am that you will miss a 3pm deadline your client set. When do you tell them?",
+        options: [
+          "At 3pm, when the work is due",
+          "Only if they ask about it",
+          "Now, with a realistic new time",
+          "After you finish, with an apology",
+        ],
+        answer: 2,
+        why: "Early warning lets the client adjust their plans. A late surprise costs more trust than the delay itself.",
+      },
+      {
+        question:
+          "Your client in New York wants a call at 10am their time in January. What time is that in Lagos?",
+        options: ["3pm", "5pm", "4am", "4pm"],
+        answer: 3,
+        why: "In January New York is UTC−5 and Lagos is UTC+1, six hours apart. Daylight saving shrinks the gap to five hours from March, which is why a calendar showing both zones helps.",
+      },
+      {
+        question:
+          "Someone calls saying they are from your client's bank and asks you to confirm the client's account number. What do you do?",
+        options: [
+          "Confirm only the last four digits",
+          "Give it, since the bank already has it",
+          "Ask them to email the request first",
+          "Decline, end the call and alert the client",
+        ],
+        answer: 3,
+        why: "Banks never need you to read back details they already hold, and emails can be faked too. Let the client call the bank on the number they trust.",
+      },
+      {
+        question:
           "Your client has two meetings booked for the same time tomorrow. What do you do?",
         options: [
-          "Pick the one you think matters more and cancel the other",
-          "Flag the clash to the client with options and a suggested fix",
-          "Wait and see which one they attend",
-          "Delete both",
+          "Cancel the one that seems less important",
+          "Flag the clash with options and a suggested fix",
+          "Leave both and let them choose on the day",
+          "Move one to the next free slot without asking",
         ],
         answer: 1,
         why: "A good assistant spots problems early and arrives with a solution, but the decision stays with the client.",
-      },
-      {
-        question:
-          "A stranger emails asking for your client's phone number and home address 'for a delivery'. What do you do?",
-        options: [
-          "Send it, because they sound polite",
-          "Send only the address",
-          "Check with your client before sharing anything",
-          "Post the question in the team group chat",
-        ],
-        answer: 2,
-        why: "Client information is confidential by default. Verify before you share.",
-      },
-      {
-        question:
-          "Three tasks arrive together: a proposal due in one hour, filing receipts, and booking a flight for next month. Which goes first?",
-        options: [
-          "The proposal, because it is both urgent and important",
-          "Filing, because it is quick",
-          "The flight, because it costs the most",
-          "Whichever arrived first",
-        ],
-        answer: 0,
-        why: "Prioritise by urgency and importance together, not by what is easiest or what arrived first.",
       },
     ],
     resources: [resources.alx, resources.workspace, resources.hubspot],
@@ -583,39 +675,58 @@ export const businessCareers: Career[] = [
     checks: [
       {
         question:
-          "A sales rep should see their own deals but must not change company-wide settings. What do you configure?",
-        options: [
-          "A new dashboard",
-          "Their profile and permissions",
-          "An email template",
-          "A report folder",
-        ],
-        answer: 1,
-        why: "Profiles and permission sets control what each user can see and do.",
-      },
-      {
-        question:
-          "Whenever a deal is marked 'Closed Won', finance should get an email automatically. Which tool does this?",
-        options: [
-          "Flow, Salesforce's automation builder",
-          "Data Loader",
-          "Chatter",
-          "A list view",
-        ],
+          "Someone fills in a form on the website and has not been qualified yet. Which Salesforce record should that create?",
+        options: ["Lead", "Opportunity", "Account", "Case"],
         answer: 0,
-        why: "Flow runs actions when records change. Data Loader is for importing and exporting records in bulk.",
+        why: "A lead is an unqualified prospect. Once qualified, it is converted into an account, a contact and often an opportunity.",
       },
       {
         question:
-          "Your CRM has the same customer entered four times with different spellings. Why does that matter?",
+          "One sales rep needs permission to export reports, but others on the same profile should not get it. What is the best way?",
         options: [
-          "It does not matter, and more records look impressive",
-          "It makes the system run faster",
-          "It only changes how the page looks",
-          "Reports become wrong and the customer gets contacted more than once",
+          "Create a new profile just for them",
+          "Give them the System Administrator profile",
+          "Assign them a permission set with it",
+          "Add the permission to their current profile",
+        ],
+        answer: 2,
+        why: "Permission sets add access for individual users without changing everyone on the profile.",
+      },
+      {
+        question:
+          "You are importing 5,000 contacts and many already exist in Salesforce. How do you avoid duplicates?",
+        options: [
+          "Import everything, then merge duplicates by hand",
+          "Turn off validation rules during the import",
+          "Import them into a new custom object instead",
+          "Match on email so existing records are updated",
         ],
         answer: 3,
-        why: "Duplicates distort every count and total, and they lead to embarrassing repeat contact.",
+        why: "Matching finds existing records, so the import updates them instead of creating copies. Cleaning up afterwards takes far longer.",
+      },
+      {
+        question:
+          "Whenever a deal is marked 'Closed Won', finance should get an email automatically. What do you build?",
+        options: [
+          "A record-triggered Flow",
+          "A Process Builder process",
+          "A Workflow Rule",
+          "A Data Loader job",
+        ],
+        answer: 0,
+        why: "Flow is Salesforce's automation tool. Workflow Rules and Process Builder are retired, and Data Loader only imports and exports records.",
+      },
+      {
+        question:
+          "Reps keep marking deals 'Closed Won' with no amount. How do you stop it?",
+        options: [
+          "Send a weekly report of deals missing an amount",
+          "Make Amount required on every page layout",
+          "A validation rule: no Closed Won without an amount",
+          "Ask managers to remind reps in team meetings",
+        ],
+        answer: 2,
+        why: "A validation rule blocks the save only in that situation. A required field on the layout would also block early-stage deals, and reports only catch the problem afterwards.",
       },
     ],
     resources: [resources.trailhead, resources.salesforceAdmins],
@@ -705,38 +816,62 @@ export const businessCareers: Career[] = [
     checks: [
       {
         question:
-          "An AI tool gives you a confident answer with a statistic and a source. What do you do before putting it in a report?",
+          "Why can the same question to an AI chatbot get a different answer each time?",
         options: [
-          "Use it, because AI tools do not make mistakes",
-          "Check that the source exists and really says that",
-          "Make the number slightly smaller to be safe",
-          "Ask the same tool whether it is sure, then use it",
+          "It picks each word with some randomness",
+          "It searches a different website each time",
+          "Staff at the company edit the answers",
+          "It learns from your questions instantly",
         ],
-        answer: 1,
-        why: "AI tools can invent facts and sources that sound real. Verification is your job, not the tool's.",
-      },
-      {
-        question: "Which prompt is most likely to get a useful result?",
-        options: [
-          "Write something about marketing",
-          "Marketing???",
-          "Write a 100-word Instagram caption for a Lagos bakery launching a new meat pie, in a friendly tone, with one call to action",
-          "Do my work",
-        ],
-        answer: 2,
-        why: "Specific prompts with an audience, a format, a length and a goal produce specific answers.",
+        answer: 0,
+        why: "Language models predict likely next words and sample among them, so wording varies. That is also why they can sound confident and still be wrong.",
       },
       {
         question:
-          "Which of these should you never paste into a public AI chatbot?",
+          "You ask a chatbot with no web search for today's naira-to-dollar rate. Why might its answer be wrong?",
         options: [
-          "A customer's BVN and bank account details",
-          "A public news article",
-          "Your own draft tweet",
-          "A recipe",
+          "Chatbots are not able to do maths",
+          "Its knowledge stops at a training cut-off",
+          "Exchange rates are kept secret",
+          "It needs a paid plan to give numbers",
         ],
-        answer: 0,
-        why: "Personal and financial data must not be shared with tools your organisation has not approved for it.",
+        answer: 1,
+        why: "Without live search, a model only knows what was in its training data. For prices, rates and news, use a tool that searches, and check the source.",
+      },
+      {
+        question:
+          "An AI draft of your cover letter comes out generic. What is the most effective next step?",
+        options: [
+          "Ask the same question again in a new chat",
+          "Type the request again in capital letters",
+          "Accept it and rewrite every line yourself",
+          "Add the job advert, your experience and a tone",
+        ],
+        answer: 3,
+        why: "Generic input gets generic output. Context, examples and constraints give the model something specific to work with.",
+      },
+      {
+        question:
+          "An AI tool gives you a confident statistic with a named source. What do you do before using it in a report?",
+        options: [
+          "Use it, since the source is named",
+          "Ask the same tool whether it is sure",
+          "Find the source and check it says that",
+          "Round the number down to be safe",
+        ],
+        answer: 2,
+        why: "AI tools can invent facts and sources that sound real. Verification is your job, not the tool's.",
+      },
+      {
+        question: "Which of these is safe to paste into a free public chatbot?",
+        options: [
+          "A complaint email with the customer's phone number",
+          "A published news article you want summarised",
+          "Your company's unreleased price list",
+          "A screenshot of a client's bank transfer",
+        ],
+        answer: 1,
+        why: "Public information is fine. Personal data, financial records and company secrets need an approved tool, or must be removed first.",
       },
     ],
     resources: [resources.elementsOfAi, resources.learnPrompting, resources.alx],

@@ -9,7 +9,7 @@ Many students and recent graduates want to move into digital work but do not kno
 ## What it does
 
 1. **Find my path.** Ten questions about what you enjoy and what your situation is (how you feel about code, how soon you need to earn, what device you have, how many hours you can give). You get your three closest career matches, each with a reason.
-2. **Skills check.** For any of the 18 careers, rate yourself against the real skills of the job, then answer three reality-check questions that have a right answer.
+2. **Skills check.** For any of the 18 careers, rate yourself against the real skills of the job, then answer five reality-check questions that have a right answer, one for each roadmap step.
 3. **Personal roadmap.** A readiness score, your strongest and weakest skill areas, and the career's five-step roadmap with the study time reduced wherever you are already strong. Change the hours you can give each week and the timeline updates.
 
 Results can be shared by link, printed, or saved as a PDF. There are no accounts. Answers are kept in the visitor's own browser.
@@ -29,7 +29,7 @@ Software and cloud (Frontend Developer, Backend Developer, Cloud Engineer, Cyber
 
 **Career matching.** Every career has a mix of seven strengths: logic, building, visual sense, words, people, organisation and sound. Your answers build the same kind of mix for you, and the two are compared. The score is then adjusted for your situation, for example a code-heavy career scores lower if you would rather not code. See `src/data/pathFinder.ts`.
 
-**Readiness.** Each career's questions are grouped under its five roadmap steps, so a rating maps straight back to a step. Readiness is 70% your average self-rating and 30% your reality-check score. If the two disagree (high confidence, wrong answers, or the reverse) the results page says so. See `src/lib/scoring.ts`.
+**Readiness.** Each career's questions are grouped under its five roadmap steps, so a rating maps straight back to a step. Readiness is 70% your average self-rating and 30% your reality-check score. If the two disagree (high confidence, wrong answers, or the reverse) the results page says so, overall and step by step. See `src/lib/scoring.ts`.
 
 **Timeline.** Each roadmap step has an estimated number of study hours. A step you rate as solid keeps 15% of its hours, and a step you have never tried keeps all of them. The remaining hours are divided by the hours you can give each week.
 

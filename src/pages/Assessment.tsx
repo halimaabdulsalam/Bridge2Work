@@ -43,7 +43,7 @@ function CareerPicker() {
         <header className="page-head">
           <h1>Which career do you want to check?</h1>
           <p>
-            Rate yourself against the real skills of the job, answer three
+            Rate yourself against the real skills of the job, answer five
             reality-check questions, and get a roadmap adjusted to your answers.
           </p>
         </header>
@@ -204,7 +204,7 @@ function SkillsCheck({ career }: { career: Career }) {
             <p>
               {prompts.length} quick ratings across the five steps of the
               roadmap, then {career.checks.length} reality-check questions.
-              About three minutes.
+              About four minutes.
             </p>
 
             <div className="intro-scale">

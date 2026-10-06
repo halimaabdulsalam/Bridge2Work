@@ -14,7 +14,7 @@ const steps = [
   },
   {
     title: "Check your skills",
-    body: "Rate yourself against the real skills of that career, then answer three reality-check questions to see if your confidence holds up.",
+    body: "Rate yourself against the real skills of that career, then answer five reality-check questions, one per roadmap step, to see if your confidence holds up.",
     to: "/assessment",
     action: "Start a skills check",
   },

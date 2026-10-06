@@ -101,7 +101,7 @@ function CareerDetails() {
                 <strong>How far along are you already?</strong>
                 <span>
                   {questionCount(career)} quick ratings and {career.checks.length}{" "}
-                  reality-check questions. About three minutes.
+                  reality-check questions. About four minutes.
                 </span>
               </>
             )}

@@ -84,38 +84,58 @@ export const creativeCareers: Career[] = [
     checks: [
       {
         question:
+          "Light grey text on a white background looks elegant, but users complain they cannot read it. Which principle is being broken?",
+        options: [
+          "Brand consistency",
+          "Grid alignment",
+          "Colour contrast",
+          "Proximity",
+        ],
+        answer: 2,
+        why: "Low contrast makes text hard to read, especially on a phone in sunlight. Accessibility guidelines set a minimum contrast for this reason.",
+      },
+      {
+        question:
+          "You want a card to grow as its text gets longer, without moving things by hand. Which Figma feature do you use?",
+        options: ["Auto layout", "Groups", "Constraints", "Masks"],
+        answer: 0,
+        why: "Auto layout sizes and spaces a frame from its content. Constraints control how layers react when their parent is resized, not when content changes.",
+      },
+      {
+        question:
+          "Which interview question gives you the most reliable insight?",
+        options: [
+          "Would you use an app that reminds you to save?",
+          "How much would you pay for a savings app?",
+          "Don't you find saving money stressful?",
+          "Tell me about the last time you tried to save",
+        ],
+        answer: 3,
+        why: "Past behaviour is evidence. Hypothetical questions invite polite guesses, and leading questions put your answer in their mouth.",
+      },
+      {
+        question:
           "Five people try your prototype and three cannot find the checkout button. What do you do?",
         options: [
-          "Add a note in onboarding explaining where the button is",
-          "Treat it as a design problem: change the layout and test again",
-          "Ignore it, because five people is too few to matter",
-          "Make the logo bigger",
+          "Add an onboarding tip explaining where it is",
+          "Treat it as a design problem: change it and retest",
+          "Ignore it, because five people is too few",
+          "Ask the three testers to try again more slowly",
         ],
         answer: 1,
         why: "If most testers fail the same step, the design is at fault. Five users is enough to reveal the big problems.",
       },
       {
-        question: "What is a wireframe for?",
-        options: [
-          "Showing the final colours and photos",
-          "Writing the code for the app",
-          "Planning layout and structure before adding visual detail",
-          "Measuring how fast the app loads",
-        ],
-        answer: 2,
-        why: "Wireframes settle what goes where cheaply, before anyone spends time on polish.",
-      },
-      {
         question:
-          "Light grey text on a white background looks elegant, but users complain. Which principle is being broken?",
+          "A developer asks how a button should look when disabled, but your design only shows its normal state. What does that tell you?",
         options: [
-          "Colour contrast for readability",
-          "Brand consistency",
-          "Grid alignment",
-          "Animation timing",
+          "Your handoff is missing component states",
+          "The developer should decide that detail",
+          "Disabled buttons are rarely needed",
+          "Lowering opacity is always good enough",
         ],
         answer: 0,
-        why: "Low contrast makes text hard to read, especially on a phone in sunlight. Accessibility guidelines set minimum contrast for this reason.",
+        why: "Handoff should cover every state: default, hover, focus, disabled, loading and error. Missing states become guesses in the code.",
       },
     ],
     resources: [resources.figma, resources.lawsOfUx, resources.nng],
@@ -204,35 +224,60 @@ export const creativeCareers: Career[] = [
     checks: [
       {
         question:
-          "The business wants more sign-ups. Users say the sign-up form is too long. What do you do first?",
+          "The business wants more sign-ups, and users say the sign-up form is too long. What do you do first?",
         options: [
-          "Add a pop-up asking people to sign up",
-          "Find out which fields are truly needed and test a shorter form",
-          "Make the button a brighter colour",
-          "Remove the form completely",
+          "Add a pop-up inviting every visitor to sign up",
+          "Split the same form across three shorter steps",
+          "Cut fields that aren't needed, then test it",
+          "Make the submit button a brighter colour",
         ],
-        answer: 1,
+        answer: 2,
         why: "The complaint points at friction. Removing unnecessary fields serves the user and the business goal together.",
       },
       {
-        question: "What is a design system?",
+        question:
+          "Spacing on your screens is 7, 13, 18 and 22px, and the layout looks uneven. What is the usual fix?",
         options: [
-          "A shared set of reusable components and rules that keep a product consistent",
-          "A project-management tool",
-          "A folder of stock photos",
-          "A type of database",
+          "Increase every gap by the same 4px",
+          "Use a consistent scale, such as multiples of 8",
+          "Space each element by eye until it looks right",
+          "Use percentages so the spacing scales",
+        ],
+        answer: 1,
+        why: "A spacing scale creates rhythm and makes decisions faster for designers and developers alike.",
+      },
+      {
+        question:
+          "You need to change the style of one button used across 40 screens. What is the right way in Figma?",
+        options: [
+          "Select all 40 buttons and edit them together",
+          "Group the buttons, then restyle the group",
+          "Paste the new button over each old one",
+          "Edit the main component so instances update",
+        ],
+        answer: 3,
+        why: "Instances inherit from their main component, so one edit updates every screen. That is the core idea of a design system.",
+      },
+      {
+        question:
+          "During a usability test, a participant gets stuck and asks you what to do. What is your best response?",
+        options: [
+          "Ask what they expected to happen and what they'd try",
+          "Show them where to tap so the test can continue",
+          "End the session, since the result is now spoiled",
+          "Explain how the feature was meant to work",
         ],
         answer: 0,
-        why: "It lets a team design and build faster while the product still looks and behaves like one thing.",
+        why: "Helping hides the very problem you came to find. Turning the question back reveals how they think the product works.",
       },
       {
         question:
           "A developer says your design needs three months to build, and the deadline is in three weeks. What is the best response?",
         options: [
-          "Insist on the full design",
-          "Hand over the files and move on",
-          "Work out together which smaller version still solves the user's problem",
-          "Cancel the feature",
+          "Keep the full design and ask for a later deadline",
+          "Hand over the files and let developers cut things",
+          "Agree a smaller version that still solves the problem",
+          "Simplify the visuals but keep every feature",
         ],
         answer: 2,
         why: "Product design is trade-offs. A smaller version that ships and solves the core problem beats a perfect one that does not.",
@@ -323,27 +368,15 @@ export const creativeCareers: Career[] = [
     checks: [
       {
         question:
-          "A client's logo will go on a billboard and also be a tiny app icon. What should you design it as?",
+          "A flyer's headline, date and price are all the same size, and nobody notices the price. What is missing?",
         options: [
-          "A vector file such as SVG or AI",
-          "A small JPEG",
-          "A screenshot",
-          "A PNG saved at low resolution",
-        ],
-        answer: 0,
-        why: "Vectors scale to any size without blurring. Pixel images break up when enlarged.",
-      },
-      {
-        question:
-          "A flyer uses six different fonts and looks chaotic. What is the usual fix?",
-        options: [
-          "Add a seventh font for contrast",
-          "Keep to one or two typefaces and use size and weight for hierarchy",
-          "Make everything bold",
-          "Set all the text in capitals",
+          "Symmetry",
+          "Visual hierarchy",
+          "A colour gradient",
+          "A bolder border",
         ],
         answer: 1,
-        why: "Hierarchy comes from size, weight and spacing. Too many typefaces compete with each other.",
+        why: "Hierarchy uses size, weight, colour and position to show what to read first. When everything is equal, nothing stands out.",
       },
       {
         question:
@@ -351,6 +384,42 @@ export const creativeCareers: Career[] = [
         options: ["RGB", "HEX", "CMYK", "HSL"],
         answer: 2,
         why: "Printers mix cyan, magenta, yellow and black. RGB is for screens, so colours can shift in print.",
+      },
+      {
+        question:
+          "A client's logo will go on a billboard and also be a tiny app icon. What format should you design it in?",
+        options: [
+          "A large, high-resolution JPEG",
+          "A transparent PNG at 300 DPI",
+          "A layered Photoshop file",
+          "A vector file, such as SVG or AI",
+        ],
+        answer: 3,
+        why: "Vectors scale to any size without blurring. Pixel images, however large, break up when enlarged far enough.",
+      },
+      {
+        question:
+          "A print shop asks for 3mm of bleed on your flyer. What do you do?",
+        options: [
+          "Extend the background 3mm past the trim edge",
+          "Add a 3mm white border inside the page edge",
+          "Shrink the whole design by 3mm on each side",
+          "Move all the text 3mm in from the edge",
+        ],
+        answer: 0,
+        why: "Cutting is never perfectly exact. Bleed extends the background past the trim so no white slivers appear. Keeping text inside a safe margin is a separate rule.",
+      },
+      {
+        question:
+          "A client looks at your draft and says 'make it pop'. What is the best response?",
+        options: [
+          "Add more colours and effects",
+          "Make the logo bigger",
+          "Ask what should stand out and what feels flat",
+          "Send three versions with brighter colours",
+        ],
+        answer: 2,
+        why: "Vague feedback hides a specific concern. One clarifying question saves several rounds of guessing.",
       },
     ],
     resources: [resources.canva, resources.googleFonts, resources.figma],
@@ -444,38 +513,61 @@ export const creativeCareers: Career[] = [
     checks: [
       {
         question:
-          "Your video reached 10,000 people, but most left within three seconds. What should you work on?",
+          "You post about cooking, football and tech on one new account, and growth is flat. What is the most likely issue?",
         options: [
-          "The hashtags",
-          "The hook: what happens in the opening seconds",
-          "The time of day you post",
-          "Making the video longer",
+          "Posting at the wrong times for your audience",
+          "No clear niche for people to follow",
+          "Not enough trending hashtags on each post",
+          "Videos that are too short",
         ],
         answer: 1,
+        why: "New accounts grow when people know what they will get by following. Pick one niche and one audience first.",
+      },
+      {
+        question:
+          "Your video reached 10,000 people, but most scrolled away within three seconds. What should you change first?",
+        options: [
+          "The hashtags and the caption text",
+          "The time of day you post it",
+          "The opening line and first shot",
+          "The total length of the video",
+        ],
+        answer: 2,
         why: "People decide almost immediately whether to keep watching. The opening has to earn the rest.",
       },
       {
         question:
-          "A brand offers to pay you to post about its product. What must you do?",
+          "Viewers say they cannot follow your talking videos, though the picture is sharp. What fixes it best?",
         options: [
-          "Hide it so the post feels natural",
-          "Delete the post after 24 hours",
-          "Only mention it if someone asks",
-          "Clearly disclose that it is a paid partnership",
+          "Shoot in 4K instead of 1080p",
+          "Add background music to fill the silence",
+          "Turn up the brightness and contrast",
+          "Use a clip-on mic and add captions",
         ],
         answer: 3,
-        why: "Platforms and advertising rules require disclosure, and your audience's trust depends on it.",
+        why: "Viewers forgive average video but not unclear sound. A cheap mic close to your mouth, plus captions for people watching on mute, fixes most of it.",
+      },
+      {
+        question: "You keep missing posting days. Which habit helps most?",
+        options: [
+          "Batch-film a week's videos in one session",
+          "Post more often to build the habit",
+          "Film each video on the day it goes out",
+          "Move to a new platform for a fresh start",
+        ],
+        answer: 0,
+        why: "Batching separates making from posting, so one busy day does not break your schedule. It is how most consistent creators work.",
       },
       {
         question:
           "Which is the most useful sign that a piece of content truly connected?",
         options: [
+          "Likes on the post",
+          "New followers that week",
+          "Views in the first hour",
           "Saves, shares and watch time",
-          "The number of hashtags you used",
-          "How long it took to make",
-          "How many filters it has",
         ],
-        answer: 0,
+        answer: 3,
         why: "Those show people valued it enough to keep it, pass it on or watch to the end.",
       },
     ],
@@ -574,38 +666,57 @@ export const creativeCareers: Career[] = [
     checks: [
       {
         question:
-          "A vocal recording has a constant low rumble from a generator outside. Which tool removes it best?",
-        options: [
-          "A high-pass filter, also called a low cut",
-          "More reverb",
-          "A louder master volume",
-          "Panning the vocal left",
-        ],
-        answer: 0,
-        why: "A high-pass filter removes low frequencies below the voice, which is where rumble lives.",
+          "A song is at 120 BPM in 4/4 time. How many beats are in each bar?",
+        options: ["8", "120", "4", "30"],
+        answer: 2,
+        why: "The top number of the time signature is beats per bar. BPM sets how fast those beats go.",
       },
       {
         question:
-          "The meter on your recording channel keeps hitting red and the sound crackles. What is wrong?",
+          "In a DAW, what is the main difference between a MIDI track and an audio track?",
         options: [
-          "The file format is wrong",
-          "The input is clipping because the level is too high",
-          "The song is too slow",
-          "The headphones are broken",
+          "MIDI stores notes; audio stores sound",
+          "MIDI is a higher-quality audio format",
+          "Audio tracks cannot be edited at all",
+          "MIDI tracks only work for drums",
+        ],
+        answer: 0,
+        why: "MIDI is instructions: which note, when and how hard. You can change the instrument or fix a note at any time, which recorded audio does not allow.",
+      },
+      {
+        question:
+          "A vocal recording has a constant low rumble from a generator outside. Which tool removes it best?",
+        options: [
+          "More reverb on the vocal",
+          "A high-pass (low-cut) filter",
+          "A louder master volume",
+          "A compressor on the vocal",
         ],
         answer: 1,
-        why: "Clipping is distortion from a signal that is too loud. Turn the input gain down and record again.",
+        why: "A high-pass filter removes low frequencies below the voice, which is where rumble lives. A compressor would make it louder, not quieter.",
       },
       {
         question: "What does a compressor do?",
         options: [
           "Makes the file smaller so it sends faster",
-          "Adds echo",
-          "Reduces the gap between the loudest and quietest parts",
-          "Changes the key of the song",
+          "Removes background noise from a recording",
+          "Narrows the gap between loud and quiet parts",
+          "Changes the key the song is in",
         ],
         answer: 2,
         why: "Compression controls dynamic range, so a vocal stays audible without sudden loud peaks.",
+      },
+      {
+        question:
+          "Your mix sounds great on studio headphones but thin on phone speakers. What do you do before release?",
+        options: [
+          "Push the master as loud as it will possibly go",
+          "Add bass until it sounds full on the phone",
+          "Release it, since most fans use headphones",
+          "Check it on several systems and references",
+        ],
+        answer: 3,
+        why: "A mix has to translate. Phone speakers barely reproduce deep bass, so compare on several systems and against released songs in the same style.",
       },
     ],
     resources: [resources.abletonLearning, resources.bandlab, resources.audacity],

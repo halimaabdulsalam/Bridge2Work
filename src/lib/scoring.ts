@@ -37,6 +37,10 @@ export interface StageResult {
   percent: number;
   status: StageStatus;
   remainingHours: number;
+  /** Whether this stage's reality-check question was answered correctly. */
+  checkCorrect: boolean;
+  /** Rated "solid" or "sharpen" but missed the reality check. */
+  overrated: boolean;
 }
 
 export interface AssessmentResult {
@@ -98,12 +102,14 @@ export function scoreAssessment(
 ): AssessmentResult {
   let cursor = 0;
 
-  const stages = career.stages.map((stage) => {
+  // Checks are written one per stage, in stage order.
+  const stages = career.stages.map((stage, index) => {
     const own = ratings.slice(cursor, cursor + stage.questions.length);
     cursor += stage.questions.length;
 
     const average = own.reduce((sum, value) => sum + value, 0) / own.length;
     const status = statusFor(average);
+    const checkCorrect = checkAnswers[index] === career.checks[index]?.answer;
 
     return {
       stage,
@@ -111,6 +117,8 @@ export function scoreAssessment(
       percent: Math.round(((average - 1) / 4) * 100),
       status,
       remainingHours: Math.round(stage.hours * remainingShare[status]),
+      checkCorrect,
+      overrated: !checkCorrect && (status === "solid" || status === "sharpen"),
     };
   });
 
@@ -134,17 +142,23 @@ export function scoreAssessment(
       title: "You know more than you think",
       body: "You rated yourself low but got every reality-check question right. Trust yourself a little more.",
     };
-  } else if (checkShare <= 1 / 3 && confidenceShare >= 0.6) {
+  } else if (checkShare <= 0.4 && confidenceShare >= 0.6) {
     calibration = {
       tone: "careful",
       title: "Worth a second look",
       body: `You rated yourself highly but missed ${missed} of ${checksTotal} reality-check questions. Test those ratings on a small project before you rely on them.`,
     };
-  } else if (checkShare >= 2 / 3) {
+  } else if (checkShare >= 0.8) {
     calibration = {
       tone: "steady",
       title: "Your confidence matches your answers",
       body: "Your self-ratings and your reality-check answers tell the same story, so this score is a fair picture.",
+    };
+  } else if (confidenceShare >= 0.5) {
+    calibration = {
+      tone: "steady",
+      title: "Mostly holds up",
+      body: `You missed ${missed} of ${checksTotal} reality-check questions. Your roadmap below marks where, so test those steps before you count them as done.`,
     };
   } else {
     calibration = {

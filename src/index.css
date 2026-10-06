@@ -2312,6 +2312,26 @@ img {
   font-size: 14.5px;
 }
 
+.plan-step .plan-step-check {
+  display: flex;
+  gap: 6px;
+  margin-top: 4px;
+  font-size: 14.5px;
+}
+
+.plan-step-check svg {
+  flex: none;
+  margin-top: 4px;
+}
+
+.plan-step .plan-step-check.is-overrated {
+  width: fit-content;
+  padding: 4px 10px;
+  border-radius: 8px;
+  background: var(--sun-soft);
+  color: var(--text);
+}
+
 .next {
   display: grid;
   grid-template-columns: 1.15fr 1fr;
