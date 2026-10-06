@@ -1,132 +1,167 @@
+import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-
-const careers = [
-  {
-    id: "virtual-assistant",
-    title: "Virtual Assistant",
-    description:
-      "Provide remote administrative, technical, or creative support to individuals and businesses.",
-  },
-  {
-    id: "data-analyst",
-    title: "Data Analyst",
-    description:
-      "Collect, clean, and interpret data to discover useful trends and patterns.",
-  },
-  {
-    id: "data-scientist",
-    title: "Data Scientist",
-    description:
-      "Use statistics, programming, and machine learning to solve problems with data.",
-  },
-  {
-    id: "data-engineer",
-    title: "Data Engineer",
-    description:
-      "Build systems and pipelines that collect, store, and process data.",
-  },
-  {
-    id: "ui-ux-designer",
-    title: "UI/UX Designer",
-    description: "Design intuitive and visually appealing digital experiences.",
-  },
-  {
-    id: "product-manager",
-    title: "Product Manager",
-    description:
-      "Guide digital products from idea to launch while working with different teams.",
-  },
-  {
-    id: "product-designer",
-    title: "Product Designer",
-    description:
-      "Combine research, UX, and visual design to create useful digital products.",
-  },
-  {
-    id: "digital-marketer",
-    title: "Digital Marketer",
-    description: "Use digital channels to reach and engage customers.",
-  },
-  {
-    id: "product-marketer",
-    title: "Product Marketer",
-    description:
-      "Communicate the value of products and help them reach the right audience.",
-  },
-  {
-    id: "graphic-designer",
-    title: "Graphic Designer",
-    description:
-      "Create visual content such as branding and marketing materials.",
-  },
-  {
-    id: "content-creator",
-    title: "Content Creator",
-    description:
-      "Create engaging content for social media, blogs, podcasts, and video.",
-  },
-  {
-    id: "frontend-developer",
-    title: "Frontend Developer",
-    description:
-      "Build the visual and interactive parts of websites and applications.",
-  },
-  {
-    id: "backend-developer",
-    title: "Backend Developer",
-    description:
-      "Build server-side systems, APIs, databases, and application logic.",
-  },
-  {
-    id: "cloud-engineer",
-    title: "Cloud Engineer",
-    description:
-      "Build and manage reliable infrastructure using cloud platforms.",
-  },
-  {
-    id: "cybersecurity-specialist",
-    title: "Cybersecurity Specialist",
-    description:
-      "Help protect systems, networks, and data from security threats.",
-  },
-  {
-    id: "music-audio-producer",
-    title: "Music & Audio Producer",
-    description: "Create, edit, and mix audio for music and other media.",
-  },
-  {
-    id: "ai-career-essentials",
-    title: "AI Career Essentials Professional",
-    description:
-      "Build foundational AI knowledge and learn how to use AI tools across different careers.",
-  },
-  {
-    id: "salesforce-administrator",
-    title: "Salesforce Administrator",
-    description: "Manage Salesforce users, data, workflows, and reports.",
-  },
-];
+import CareerCard from "../components/CareerCard";
+import Icon from "../components/Icon";
+import { careers, categories } from "../data/careers";
+import { rankCareers } from "../data/pathFinder";
+import type { CategoryId } from "../data/types";
+import { useDocumentTitle } from "../lib/hooks";
+import { loadPathAnswers, loadProfile, loadResults } from "../lib/storage";
 
 function Careers() {
+  useDocumentTitle("Explore digital careers");
+
+  const [category, setCategory] = useState<CategoryId | "all">("all");
+  const [noCoding, setNoCoding] = useState(false);
+  const [phoneOnly, setPhoneOnly] = useState(false);
+  const [search, setSearch] = useState("");
+
+  const [profile] = useState(loadProfile);
+  const [results] = useState(loadResults);
+  const [pathAnswers] = useState(loadPathAnswers);
+
+  const matches = useMemo(() => {
+    if (!pathAnswers) return null;
+    return new Map(
+      rankCareers(pathAnswers).map((match) => [match.career.id, match.percent]),
+    );
+  }, [pathAnswers]);
+
+  const visible = useMemo(() => {
+    const term = search.trim().toLowerCase();
+
+    const filtered = careers.filter((career) => {
+      if (category !== "all" && career.category !== category) return false;
+      if (noCoding && career.coding !== 0) return false;
+      if (phoneOnly && career.startOn !== "phone") return false;
+      if (!term) return true;
+
+      return [career.title, career.summary, ...career.skills, ...career.tools]
+        .join(" ")
+        .toLowerCase()
+        .includes(term);
+    });
+
+    if (!matches) return filtered;
+    return [...filtered].sort(
+      (a, b) => (matches.get(b.id) ?? 0) - (matches.get(a.id) ?? 0),
+    );
+  }, [category, noCoding, phoneOnly, search, matches]);
+
+  const clearFilters = () => {
+    setCategory("all");
+    setNoCoding(false);
+    setPhoneOnly(false);
+    setSearch("");
+  };
+
   return (
-    <main>
-      <h1>Explore Digital Careers</h1>
+    <main className="page">
+      <div className="container">
+        <header className="page-head">
+          <h1>Explore digital careers</h1>
+          <p>
+            {careers.length} paths into digital work. Each one shows what the
+            job involves, what you need to learn and roughly how long it takes.
+          </p>
+        </header>
 
-      <p>
-        Discover different digital career paths and find one that interests you.
-      </p>
+        {!matches && (
+          <Link to="/find-my-path" className="nudge">
+            <span>
+              <strong>Not sure where to look?</strong> Answer ten questions and
+              we will sort this list by how well each career fits you.
+            </span>
+            <span className="button button-ink button-small">
+              Find my path
+              <Icon name="arrow-right" size={16} />
+            </span>
+          </Link>
+        )}
 
-      <section>
-        {careers.map((career) => (
-          <article key={career.id}>
-            <h2>{career.title}</h2>
+        <div className="filters">
+          <div className="chips" role="group" aria-label="Career family">
+            <button
+              type="button"
+              className="chip"
+              aria-pressed={category === "all"}
+              onClick={() => setCategory("all")}
+            >
+              All
+            </button>
+            {categories.map((item) => (
+              <button
+                key={item.id}
+                type="button"
+                className="chip"
+                aria-pressed={category === item.id}
+                onClick={() => setCategory(item.id)}
+              >
+                {item.label}
+              </button>
+            ))}
+          </div>
 
-            <p>{career.description}</p>
+          <div className="filters-row">
+            <label className="search">
+              <Icon name="search" size={18} />
+              <span className="visually-hidden">Search careers</span>
+              <input
+                type="search"
+                placeholder="Search by role, skill or tool"
+                value={search}
+                onChange={(event) => setSearch(event.target.value)}
+              />
+            </label>
 
-            <Link to={`/careers/${career.id}`}>Learn More</Link>
-          </article>
-        ))}
-      </section>
+            <label className="toggle">
+              <input
+                type="checkbox"
+                checked={noCoding}
+                onChange={(event) => setNoCoding(event.target.checked)}
+              />
+              No coding needed
+            </label>
+
+            <label className="toggle">
+              <input
+                type="checkbox"
+                checked={phoneOnly}
+                onChange={(event) => setPhoneOnly(event.target.checked)}
+              />
+              Can start on a phone
+            </label>
+          </div>
+        </div>
+
+        <p className="result-count" aria-live="polite">
+          {visible.length} {visible.length === 1 ? "career" : "careers"}
+          {matches ? ", best match first" : ""}. Time estimates assume{" "}
+          {profile.hoursPerWeek} hours a week.
+        </p>
+
+        {visible.length > 0 ? (
+          <div className="career-grid">
+            {visible.map((career) => (
+              <CareerCard
+                key={career.id}
+                career={career}
+                hoursPerWeek={profile.hoursPerWeek}
+                matchPercent={matches?.get(career.id)}
+                readiness={results[career.id]?.readiness}
+              />
+            ))}
+          </div>
+        ) : (
+          <div className="empty">
+            <h2>No careers match those filters</h2>
+            <p>Try removing a filter or searching for something broader.</p>
+            <button type="button" className="button button-ink" onClick={clearFilters}>
+              Clear filters
+            </button>
+          </div>
+        )}
+      </div>
     </main>
   );
 }

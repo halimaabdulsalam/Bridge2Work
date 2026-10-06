@@ -1,185 +1,311 @@
+import { useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
-import { assessmentQuestions } from "../data/AssessmentQuestions";
-import { careerRoadmaps } from "../data/CareerRoadmaps";
+import BridgeProgress from "../components/BridgeProgress";
+import Icon from "../components/Icon";
+import { getCareer, questionCount } from "../data/careers";
+import { useCountUp, useDocumentTitle } from "../lib/hooks";
+import {
+  capitalise,
+  decodeAnswers,
+  scoreAssessment,
+  statusLabels,
+  timeAtPace,
+} from "../lib/scoring";
+import { loadProfile, saveProfile } from "../lib/storage";
+
+const paces = [3, 7, 14, 25];
 
 function Results() {
   const [searchParams] = useSearchParams();
+  const career = getCareer(searchParams.get("career"));
 
-  const careerId = searchParams.get("career");
-  const score = Number(searchParams.get("score")) || 0;
+  const ratings = career
+    ? decodeAnswers(searchParams.get("r"), questionCount(career), 1, 5)
+    : null;
+  const checkAnswers = career
+    ? decodeAnswers(searchParams.get("k"), career.checks.length, 0, 3)
+    : null;
 
-  const answerData = searchParams.get("answers");
+  const result =
+    career && ratings && checkAnswers
+      ? scoreAssessment(career, ratings, checkAnswers)
+      : null;
 
-  const answers: number[] = answerData
-    ? JSON.parse(decodeURIComponent(answerData))
-    : [];
+  const [hoursPerWeek, setHoursPerWeek] = useState(
+    () => loadProfile().hoursPerWeek,
+  );
+  const [copied, setCopied] = useState(false);
 
-  const assessment = careerId
-    ? assessmentQuestions[careerId as keyof typeof assessmentQuestions]
-    : undefined;
+  const readiness = useCountUp(result?.readiness ?? 0);
 
-  let level = "Beginner";
+  useDocumentTitle(career && result ? `${career.title} result` : "Your result");
 
-  if (score >= 3.8) {
-    level = "Advanced";
-  } else if (score >= 2.5) {
-    level = "Intermediate";
+  if (!career || !result || !checkAnswers) {
+    return (
+      <main className="page">
+        <div className="container empty">
+          <h1>There is no result to show yet</h1>
+          <p>
+            This link is missing some answers. Take a skills check and your
+            result will appear here.
+          </p>
+          <div className="empty-actions">
+            <Link to="/assessment" className="button button-ink">
+              Start a skills check
+            </Link>
+            <Link to="/find-my-path" className="button button-outline">
+              Find my path first
+            </Link>
+          </div>
+        </div>
+      </main>
+    );
   }
 
-  const careerName = careerId
-    ? careerId
-        .split("-")
-        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-        .join(" ")
-    : "Your Chosen Career";
+  const ranked = [...result.stages].sort((a, b) => b.average - a.average);
+  const strongest = ranked[0];
+  const weakest = ranked[ranked.length - 1];
+  const focus = result.focusIndex >= 0 ? result.stages[result.focusIndex] : null;
 
-  const roadmap = careerId
-    ? careerRoadmaps[careerId as keyof typeof careerRoadmaps]
-    : undefined;
+  const timeLeft = capitalise(timeAtPace(result.remainingHours, hoursPerWeek));
 
-  const ratedQuestions = assessment
-    ? assessment.questions.map((question, index) => ({
-        question,
-        score: answers[index] || 0,
-      }))
-    : [];
+  function changePace(hours: number) {
+    setHoursPerWeek(hours);
+    saveProfile({ ...loadProfile(), hoursPerWeek: hours });
+  }
 
-  const strongestAreas = [...ratedQuestions]
-    .filter((item) => item.score >= 4)
-    .sort((a, b) => b.score - a.score)
-    .slice(0, 3);
-
-  const areasToBuild = [...ratedQuestions]
-    .filter((item) => item.score <= 2)
-    .sort((a, b) => a.score - b.score)
-    .slice(0, 3);
+  async function copyLink() {
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+      setCopied(true);
+      window.setTimeout(() => setCopied(false), 2200);
+    } catch {
+      // Clipboard access was refused. The address bar still has the link.
+    }
+  }
 
   return (
-    <main className="results">
-      <div className="results-header">
-        <p className="results-label">ASSESSMENT COMPLETE</p>
+    <main className="page results">
+      <div className="container container-medium">
+        <header className="results-head">
+          <span className={`icon-tile icon-tile-large tile-${career.category}`}>
+            <Icon name={career.icon} size={34} />
+          </span>
+          <div>
+            <p className="career-family">Your skills check result</p>
+            <h1>{career.title}</h1>
+          </div>
+        </header>
 
-        <h1>Your Career Assessment Results</h1>
-
-        <p>
-          Here's a snapshot of your current confidence level for this career
-          path.
-        </p>
-      </div>
-
-      <section className="results-card">
-        <p className="results-career-label">YOUR CHOSEN CAREER</p>
-
-        <h2>{careerName}</h2>
-
-        <div className="results-score">
-          <span>{score}</span>
-          <small>/ 5</small>
-        </div>
-
-        <p className="results-level">
-          Current level: <strong>{level}</strong>
-        </p>
-
-        <p className="results-level-description">
-          {level === "Beginner" &&
-            "You're starting to build your foundation in this career."}
-
-          {level === "Intermediate" &&
-            "You have some confidence in the core skills and can focus on building practical experience."}
-
-          {level === "Advanced" &&
-            "You show strong confidence across the assessed areas and can focus on deeper practice and real-world projects."}
-        </p>
-      </section>
-
-      <section className="results-breakdown">
-        <div className="results-section">
-          <h2>Your Strong Areas</h2>
-
-          {strongestAreas.length > 0 ? (
-            <div className="results-list">
-              {strongestAreas.map((item) => (
-                <div className="results-item" key={item.question}>
-                  <p>{item.question}</p>
-                  <span>{item.score}/5</span>
-                </div>
-              ))}
+        <section className="score-card" aria-labelledby="score-title">
+          <div className="score-main">
+            <div className="score-number">
+              <strong>{readiness}</strong>
+              <span>%</span>
             </div>
-          ) : (
+            <div>
+              <h2 id="score-title">{result.level}</h2>
+              <p>{result.levelNote}</p>
+            </div>
+          </div>
+
+          <BridgeProgress stages={result.stages} readiness={result.readiness} />
+        </section>
+
+        <section className="insights" aria-label="What your answers show">
+          <div className="insight">
+            <h2>Strongest area</h2>
+            <p className="insight-value">{strongest.stage.name}</p>
+            <p>You rated yourself {strongest.average.toFixed(1)} out of 5 here.</p>
+          </div>
+
+          <div className="insight">
+            <h2>Biggest gap</h2>
+            <p className="insight-value">{weakest.stage.name}</p>
             <p>
-              Keep practising and building your confidence. Your stronger areas
-              will become clearer as you continue learning.
+              {weakest === strongest
+                ? "Your ratings are even across every area."
+                : `You rated yourself ${weakest.average.toFixed(1)} out of 5 here.`}
             </p>
-          )}
-        </div>
+          </div>
 
-        <div className="results-section">
-          <h2>Areas to Build</h2>
+          <div className={`insight insight-${result.calibration.tone}`}>
+            <h2>
+              Reality check: {result.checksCorrect} of {result.checksTotal}
+            </h2>
+            <p className="insight-value">{result.calibration.title}</p>
+            <p>{result.calibration.body}</p>
+          </div>
+        </section>
 
-          {areasToBuild.length > 0 ? (
-            <div className="results-list">
-              {areasToBuild.map((item) => (
-                <div className="results-item" key={item.question}>
-                  <p>{item.question}</p>
-                  <span>{item.score}/5</span>
+        <section className="plan" aria-labelledby="plan-title">
+          <div className="plan-head">
+            <div>
+              <h2 id="plan-title">Your roadmap, adjusted</h2>
+              <p>
+                The same five steps as everyone else, with the time cut down
+                wherever you are already strong.
+              </p>
+            </div>
+
+            <div className="pace">
+              <span id="pace-label">Hours you can give each week</span>
+              <div className="segmented" role="group" aria-labelledby="pace-label">
+                {paces.map((hours) => (
+                  <button
+                    key={hours}
+                    type="button"
+                    aria-pressed={hoursPerWeek === hours}
+                    onClick={() => changePace(hours)}
+                  >
+                    {hours}
+                  </button>
+                ))}
+              </div>
+              <p className="pace-result" aria-live="polite">
+                <Icon name="clock" size={18} />
+                <span>
+                  <strong>{timeLeft}</strong> to finish, with about{" "}
+                  {result.remainingHours} hours of study left
+                </span>
+              </p>
+            </div>
+          </div>
+
+          <ol className="plan-list">
+            {result.stages.map((item, index) => (
+              <li
+                key={item.stage.step}
+                className={
+                  index === result.focusIndex
+                    ? "plan-step is-focus"
+                    : `plan-step is-${item.status}`
+                }
+              >
+                <span className="roadmap-number">
+                  {item.status === "solid" ? <Icon name="check" size={18} /> : index + 1}
+                </span>
+
+                <div className="plan-step-body">
+                  <div className="plan-step-title">
+                    <h3>{item.stage.step}</h3>
+                    {index === result.focusIndex && (
+                      <span className="pill pill-sun">Start here</span>
+                    )}
+                    <span className={`pill pill-${item.status}`}>
+                      {statusLabels[item.status]}
+                    </span>
+                  </div>
+
+                  <div className="meter" aria-hidden="true">
+                    <i
+                      className={`meter-${item.status}`}
+                      style={{ width: `${Math.max(4, item.percent)}%` }}
+                    />
+                  </div>
+
+                  <p>{item.stage.detail}</p>
+                  <p className="plan-step-time">
+                    Your rating: {item.average.toFixed(1)} out of 5. About{" "}
+                    {item.remainingHours} of {item.stage.hours} hours left
+                    {item.remainingHours > 0
+                      ? ` (${timeAtPace(item.remainingHours, hoursPerWeek)}).`
+                      : "."}
+                  </p>
                 </div>
-              ))}
-            </div>
-          ) : (
-            <p>
-              You showed confidence across these questions. Keep practising to
-              strengthen your skills further.
+              </li>
+            ))}
+          </ol>
+        </section>
+
+        <section className="next" aria-labelledby="next-title">
+          <div className="next-main">
+            <h2 id="next-title">What to do this week</h2>
+            {focus ? (
+              <p>
+                <strong>{focus.stage.step}.</strong> {focus.stage.detail}
+              </p>
+            ) : (
+              <p>
+                <strong>Prove it.</strong> You rated every area as solid, so
+                stop studying and build: {career.firstWin.toLowerCase()}.
+              </p>
+            )}
+            <p className="next-win">
+              <Icon name="flag" size={18} />
+              <span>
+                A first win to aim for: {career.firstWin.toLowerCase()}.
+              </span>
             </p>
-          )}
-        </div>
-      </section>
+          </div>
 
-      <section className="results-roadmap">
-        <h2>Your Suggested Learning Path</h2>
+          <div className="next-resources">
+            <h3>Free places to start</h3>
+            <ul className="resource-list">
+              {career.resources.map((resource) => (
+                <li key={resource.url}>
+                  <a href={resource.url} target="_blank" rel="noreferrer">
+                    {resource.label}
+                    <Icon name="external" size={15} />
+                  </a>
+                  <span>{resource.note}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
 
-        <p>
-          Use this roadmap as a starting point for building your skills in{" "}
-          {roadmap?.title || careerName}.
-        </p>
+        <details className="review">
+          <summary>Review the reality-check questions</summary>
+          <ol>
+            {career.checks.map((check, index) => {
+              const right = checkAnswers[index] === check.answer;
 
-        <div className="roadmap-list">
-          {roadmap?.steps.map((step, index) => (
-            <div className="roadmap-step" key={step}>
-              <span className="roadmap-number">{index + 1}</span>
+              return (
+                <li key={check.question}>
+                  <p>{check.question}</p>
+                  <p className={right ? "review-answer is-correct" : "review-answer"}>
+                    <Icon name={right ? "check" : "x"} size={16} />
+                    <span>
+                      {right ? "You answered: " : "Correct answer: "}
+                      {check.options[check.answer]}
+                    </span>
+                  </p>
+                  <p className="review-why">{check.why}</p>
+                </li>
+              );
+            })}
+          </ol>
+        </details>
 
-              <p>{step}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section className="results-next">
-        <h2>What to Do Next</h2>
-
-        <p>
-          Start with the first step in your learning path and build your skills
-          through practice and small projects.
-        </p>
-
-        <Link to={`/careers/${careerId}`} className="secondary-button">
-          Review Career Details
-        </Link>
-      </section>
-
-      <div className="results-actions">
-        {careerId && (
-          <Link
-            to={`/assessment?career=${careerId}`}
-            className="primary-button"
+        <div className="results-actions">
+          <button type="button" className="button button-ink" onClick={copyLink}>
+            <Icon name={copied ? "check" : "link"} size={18} />
+            {copied ? "Link copied" : "Copy a link to this result"}
+          </button>
+          <button
+            type="button"
+            className="button button-outline"
+            onClick={() => window.print()}
           >
-            Retake Assessment
+            <Icon name="printer" size={18} />
+            Print or save as PDF
+          </button>
+          <Link to={`/assessment?career=${career.id}`} className="button button-outline">
+            <Icon name="refresh" size={18} />
+            Check again
           </Link>
-        )}
+          <Link to="/careers" className="text-link">
+            Explore other careers
+            <Icon name="arrow-right" size={16} />
+          </Link>
+        </div>
 
-        <Link to="/careers" className="secondary-button">
-          Explore More Careers
-        </Link>
+        <p className="results-disclaimer">
+          This result is based on how you rated yourself, plus three short
+          questions. Treat it as a guide to where to spend your time, not a
+          certificate. Study hours are estimates.
+        </p>
       </div>
     </main>
   );
